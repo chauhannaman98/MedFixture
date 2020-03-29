@@ -88,14 +88,14 @@ class App:
         self.val6 = self.phone_ent.get()
 
         # checking if the user input is empty
-        if self.val1 == '' or self.val2 == '' or self.val3 == '' or self.val4 == '' or self.val5 == '':
-            tkinter.messagebox.showerror("Warning","Please fill up all the boxes")
+        if self.val1 == '' or self.val2 == '' or self.val3 == '' or self.val4 == '' or self.val5 == '' or self.val6 == '':
+            tkinter.messagebox.showwarning("Warning","Please fill up all the boxes")
         else:
             # now we add to the database
             sql = "INSERT INTO 'appointments' (name, age, gender, location, scheduled_time, phone) VALUES(?, ?, ?, ?, ?, ?)"
             c.execute(sql, (self.val1, self.val2, self.val3, self.val4, self.val5, self.val6))
             conn.commit()
-            print("Successfully added to the database!")
+            tkinter.messagebox.showinfo("Success","Appointment for "+str(self.val1)+" has been created")
 
 
 #creating the object
