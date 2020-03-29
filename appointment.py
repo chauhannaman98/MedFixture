@@ -13,6 +13,8 @@ conn = sqlite3.connect('database.db')
 # cursor to move in the database
 c = conn.cursor()
 
+# empty list to later appends the ids from the database
+ids = []
 
 # tkinter window
 class App:
@@ -77,6 +79,10 @@ class App:
         self.submit = Button(self.left, text="Add Appointment", width=20, height=2, bg='steelblue', command=self.add_appointment)
         self.submit.place(x=300, y=340)
 
+        # displaying the logs in right frame
+        self.box = Text(self.right, width=40, height=38)
+        self.box.place(x=30, y=30)
+
     # function to call when the submit button is clicked
     def add_appointment(self):
         # getting the user inputs
@@ -96,6 +102,18 @@ class App:
             c.execute(sql, (self.val1, self.val2, self.val3, self.val4, self.val5, self.val6))
             conn.commit()
             tkinter.messagebox.showinfo("Success","Appointment for "+str(self.val1)+" has been created")
+            
+            # getting the number of appointments fixed to view in the log
+            sql2 = "SELECT ID FROM appointment"
+            self.result = c.execute(sql2)
+            for self.row in self.result:
+                self.id = self.row[0]
+                ids.append(self.id)
+
+            # ordering the ids
+            self.new = sorted(ids)
+            self.final_id = self.new[len(ids)-1]
+            self.box.insert(END, "Appointment fixed"+str(self.final_id))
 
 
 #creating the object
@@ -106,7 +124,7 @@ b = App(root)
 root.geometry("1200x720+0+0")
 
 # preventing the resize feature
-# root.resizable(False, False)
+root.resizable(False, False)
 
 # end the loop
 root.mainloop()
