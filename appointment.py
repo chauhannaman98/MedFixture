@@ -6,6 +6,7 @@ except ImportError:
     # for Python3
     from tkinter import *   ## notice lowercase 't' in tkinter here
 import sqlite3
+import tkinter.messagebox
 
 # connect to the databse.
 conn = sqlite3.connect('database.db')
@@ -66,8 +67,27 @@ class App:
         self.time_ent.place(x=250, y=260)
 
         # button to perform a command
-        self.submit = Button(self.left, text="Add Appointment", width=20, height=2, bg='grey')
-        self.submit.place(x=330, y=300)
+        self.submit = Button(self.left, text="Add Appointment", width=20, height=2, bg='steelblue', command=self.add_appointment)
+        self.submit.place(x=300, y=300)
+
+    # function to call when the submit button is clicked
+    def add_appointment(self):
+        # getting the user inputs
+        self.val1 = self.name_ent.get()
+        self.val2 = self.age_ent.get()
+        self.val3 = self.gender_ent.get()
+        self.val4 = self.location_ent.get()
+        self.val5 = self.time_ent.get()
+
+        # checking if the user input is empty
+        if self.val1 == '' or self.val2 == '' or self.val3 == '' or self.val4 == '' or self.val5 == '':
+            tkinter.messagebox.showerror("Warning","Please fill up all the boxes")
+        else:
+            # now we add to the database
+            sql = "INSERT INTO 'appointments' (name, age, gender, location, scheduled_time) VALUES(?, ?, ?, ?, ?)"
+            c.execute(sql, (self.val1, self.val2, self.val3, self.val4, self.val5))
+            conn.commit()
+            print("Successfully added to the database!")
 
 
 #creating the object
@@ -78,7 +98,7 @@ b = App(root)
 root.geometry("1200x720+0+0")
 
 # preventing the resize feature
-root.resizable(False, False)
+# root.resizable(False, False)
 
 # end the loop
 root.mainloop()
