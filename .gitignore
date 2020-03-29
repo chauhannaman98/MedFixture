@@ -1,3 +1,9 @@
+# Editor config files
+.vscode/
+
+# DB files
+*.sqbpro
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
