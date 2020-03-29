@@ -1,8 +1,13 @@
+# files
+database.db
+
 # Editor config files
 .vscode/
 
 # DB files
 *.sqbpro
+*.db
+*.db-journal
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
