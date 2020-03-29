@@ -50,6 +50,10 @@ class App:
         self.time = Label(self.left, text="Appointment Time", font=('arial 18 bold'), fg='black', bg='lightblue')
         self.time.place(x=5, y=260)
 
+        # phone
+        self.phone = Label(self.left, text="Phone Number", font=('arial 18 bold'), fg='black', bg='lightblue')
+        self.phone.place(x=5, y=300)
+
         # Enteries for all labels==============================================================
         self.name_ent = Entry(self.left, width=30)
         self.name_ent.place(x=250, y=100)
@@ -66,9 +70,12 @@ class App:
         self.time_ent = Entry(self.left, width=30)
         self.time_ent.place(x=250, y=260)
 
+        self.phone_ent = Entry(self.left, width=30)
+        self.phone_ent.place(x=250, y=300)
+
         # button to perform a command
         self.submit = Button(self.left, text="Add Appointment", width=20, height=2, bg='steelblue', command=self.add_appointment)
-        self.submit.place(x=300, y=300)
+        self.submit.place(x=300, y=340)
 
     # function to call when the submit button is clicked
     def add_appointment(self):
@@ -78,14 +85,15 @@ class App:
         self.val3 = self.gender_ent.get()
         self.val4 = self.location_ent.get()
         self.val5 = self.time_ent.get()
+        self.val6 = self.phone_ent.get()
 
         # checking if the user input is empty
         if self.val1 == '' or self.val2 == '' or self.val3 == '' or self.val4 == '' or self.val5 == '':
             tkinter.messagebox.showerror("Warning","Please fill up all the boxes")
         else:
             # now we add to the database
-            sql = "INSERT INTO 'appointments' (name, age, gender, location, scheduled_time) VALUES(?, ?, ?, ?, ?)"
-            c.execute(sql, (self.val1, self.val2, self.val3, self.val4, self.val5))
+            sql = "INSERT INTO 'appointments' (name, age, gender, location, scheduled_time, phone) VALUES(?, ?, ?, ?, ?, ?)"
+            c.execute(sql, (self.val1, self.val2, self.val3, self.val4, self.val5, self.val6))
             conn.commit()
             print("Successfully added to the database!")
 
