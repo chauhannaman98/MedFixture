@@ -5,9 +5,9 @@ database.db
 .vscode/
 
 # DB files
- *.sqbpro
+*.sqbpro
 *.db
- *.db-journal
+*.db-journal
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
