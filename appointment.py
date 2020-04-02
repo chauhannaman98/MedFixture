@@ -5,6 +5,7 @@ try:
 except ImportError:
     # for Python3
     from tkinter import *   ## notice lowercase 't' in tkinter here
+    import tkinter as tk
 import sqlite3
 import tkinter.messagebox
 
@@ -123,7 +124,7 @@ class App:
 
 
 #creating the object
-root = Tk()
+root = tk.Tk()
 b = App(root)
 
 # resolution of the window
@@ -131,6 +132,10 @@ root.geometry("1200x720+0+0")
 
 # preventing the resize feature
 root.resizable(False, False)
+
+# title of the window
+root.title("Techmirtz Hospital Appointment Application")
+
 
 # end the loop
 root.mainloop()
