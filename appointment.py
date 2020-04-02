@@ -136,6 +136,8 @@ root.resizable(False, False)
 # title of the window
 root.title("Techmirtz Hospital Appointment Application")
 
+# icon of the application
+root.iconphoto(False, tk.PhotoImage(file='/icon.png'))
 
 # end the loop
 root.mainloop()
