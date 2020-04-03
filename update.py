@@ -16,8 +16,16 @@ c = conn.cursor()
 class App:
     def __init__(self, master):
         self.master = master
-        
 
+        self.name = Label(master, text="Pateint's name", font('arial 18 bold'))
+        self.name.place(x=0, y=60)
+
+        self.namenet = Entry(master, width=30)
+        self.namenet.place(x=200, y=62)
+
+        # search button
+        self.search = Button(master, text="Search", width=17, height=1, bg='steelblue')
+        self.search
 
 #creating the object
 root = tk.Tk()
