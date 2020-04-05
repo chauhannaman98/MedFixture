@@ -10,7 +10,7 @@ import sqlite3
 import pyttsx3
 
 #connection to database
-conn = sqlite3.connect('database.db')
+conn = sqlite3.connect('../database.db')
 c = conn.cursor()
 
 # empty lists to append later
@@ -64,5 +64,5 @@ b = Application(root)
 root.geometry("1366x768+0+0")
 root.resizable(False, False)
 root.title("Techmirtz Hospital Appointment Application - Update Appointment")
-root.iconphoto(False, tk.PhotoImage(file='icon.png'))
+root.iconphoto(False, tk.PhotoImage(file='../resources/icon.png'))
 root.mainloop()

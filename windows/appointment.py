@@ -10,7 +10,7 @@ import sqlite3
 import tkinter.messagebox
 
 # connect to the databse.
-conn = sqlite3.connect('database.db')
+conn = sqlite3.connect('../database.db')
 # cursor to move in the database
 c = conn.cursor()
 
@@ -137,7 +137,7 @@ root.resizable(False, False)
 root.title("Techmirtz Hospital Appointment Application")
 
 # icon of the application
-root.iconphoto(False, tk.PhotoImage(file='icon.png'))
+root.iconphoto(False, tk.PhotoImage(file='../resources/icon.png'))
 
 # end the loop
 root.mainloop()
