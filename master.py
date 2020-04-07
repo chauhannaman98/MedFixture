@@ -18,6 +18,26 @@ class App:
     def __init__(self, master):
         self.master = master
 
+        # menu bar
+        '''Chooser = Menu()
+        itemone = Menu()
+
+        itemone.add_command(label='Add Record')
+        itemone.add_command(label='Edit Record')
+        itemone.add_command(label='Delete Record')
+        itemone.add_separator()
+        itemone.add_command(label='Help')
+        itemone.add_command(label='Exit')
+
+        Chooser.add_cascade(label='File', menu=itemone)
+        Chooser.add_command(label='Add')
+        Chooser.add_command(label='Edit')
+        Chooser.add_command(label='Delete')
+        Chooser.add_command(label='Help')
+        Chooser.add_command(label='Exit')
+
+        root.config(menu=Chooser)'''
+
         # labels for window
         # login ID
         self.login_id = Label(text="Login ID", font=('arial 12 bold'), fg='black')
