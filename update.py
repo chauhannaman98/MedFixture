@@ -10,7 +10,7 @@ except ImportError:
 import sqlite3
 import tkinter.messagebox
 
-conn = sqlite3.connect('../database.db')
+conn = sqlite3.connect('database.db')
 c = conn.cursor()
 
 class App:
@@ -137,7 +137,7 @@ b = App(root)
 root.geometry("1200x720+0+0")
 root.resizable(False, False)
 root.title("Techmirtz Hospital Appointment Application - Update Appointment")
-root.iconphoto(False, tk.PhotoImage(file='../resources/icon.png'))
+root.iconphoto(False, tk.PhotoImage(file='resources/icon.png'))
 
 # end the loop
 root.mainloop()
