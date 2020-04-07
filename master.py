@@ -44,15 +44,14 @@ class App:
         self.password = self.password_ent.get()
         self.login_id_ent.delete(0, END)
         self.password_ent.delete(0, END)
-        # sql = "SELECT * FROM credentials WHERE id LIKE ?"
-        self.res = c.execute("SELECT * FROM credentials WHERE id LIKE ?", (self.id,))
+        sql = "SELECT * FROM credentials WHERE id LIKE ?"
+        self.input = str(self.id)
+        self.res = c.execute(sql, (self.input,))
         for self.row in self.res:
             self.db_name = self.row[1]
             self.db_pass = self.row[2]
             self.db_designation = self.row[3]
 
-            print("db_pass: "+self.db_pass)
-            print("password: "+self.password)
         if self.db_pass == self.password:
             tkinter.messagebox.showinfo("Login Successful", "Hello "+self.db_name+"! You have successfully logged in as " + self.db_designation)
         else:
