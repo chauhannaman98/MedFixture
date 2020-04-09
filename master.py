@@ -8,10 +8,7 @@ except ImportError:
     import tkinter as tk
 import sqlite3
 import tkinter.messagebox
-import os
-
-# import python files
-# import appointment
+import os, sys
 
 conn = sqlite3.connect('database.db')
 c = conn.cursor()
@@ -106,15 +103,30 @@ def drawWin():
 
 # function to open the appointment window    
 def appointment():
-    os.system("python3 appointment.py")
+    if sys.platform.startswith('linux'):
+        print("OS = linux")
+        os.system("python3 appointment.py")
+    elif sys.platform.startswith('win32'):
+        print("OS = win32")
+        os.system("python appointment.py")
 
 # function to open the update window  
 def update():
-    os.system("python3 update.py")
+    if sys.platform.startswith('linux'):
+        print("OS = linux")
+        os.system("python3 update.py")
+    elif sys.platform.startswith('win32'):
+        print("OS = win32")
+        os.system("python update.py")
 
 # function to open the display window  
 def display():
-    os.system("python3 display.py")
+    if sys.platform.startswith('linux'):
+        print("OS = linux")
+        os.system("python3 display.py")
+    elif sys.platform.startswith('win32'):
+        print("OS = win32")
+        os.system("python display.py")
 
 root = tk.Tk()
 b = App(root)
