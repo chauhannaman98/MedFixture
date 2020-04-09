@@ -9,10 +9,11 @@ except ImportError:
 import sqlite3
 import tkinter.messagebox
 
+# import python files
+import appointment
+
 conn = sqlite3.connect('database.db')
 c = conn.cursor()
-
-# exec(open("./appointment.py").read())
 
 class App:
     def __init__(self, master):
@@ -74,6 +75,7 @@ class App:
 
         if self.db_pass == self.password:
             tkinter.messagebox.showinfo("Login Successful", "Hello "+self.db_name+"! You have successfully logged in as " + self.db_designation)
+            
         else:
             tkinter.messagebox.showerror("Login Unsuccessful", "Invalid credentials! Please login again")
             

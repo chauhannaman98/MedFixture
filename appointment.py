@@ -19,7 +19,7 @@ ids = []
 
 # tkinter window
 class App:
-    def __init__(self, master):
+    def drawWin(self, master):
         self.master = master
 
         # creating the format in master
