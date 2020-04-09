@@ -75,9 +75,13 @@ def drawWin():
     top.geometry("480x320+0+0") 
     top.title("Welcome") 
 
+    # Hide root window
+    hide_root()
+
     # function to close the top window
     def logout():
         top.destroy()
+        show_root()
     
     # menu bar
     Chooser = Menu()
@@ -118,4 +122,13 @@ root.geometry("540x320+0+0")
 root.resizable(False, False)
 root.title("Techmirtz Hospital Appointment Application - Login Window")
 root.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
+
+def hide_root():
+    # Hide root window
+    root.iconify()
+
+def show_root():
+    # Show root window
+    root.deiconify()
+
 root.mainloop()
