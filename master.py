@@ -74,34 +74,41 @@ def drawWin():
     top = Toplevel() 
     top.geometry("480x320+0+0") 
     top.title("Welcome") 
+
+    # function to close the top window
+    def logout():
+        top.destroy()
     
     # menu bar
     Chooser = Menu()
     itemone = Menu()
 
-    itemone.add_command(label='Add Appointment',command=appointment)
+    itemone.add_command(label='Add Appointment', command=appointment)
     itemone.add_command(label='Edit Appointment', command=update)
     itemone.add_command(label='Delete Appointment', command=update)
     itemone.add_separator()
     itemone.add_command(label='Help')
-    itemone.add_command(label='Logout')
+    itemone.add_command(label='Logout', command=logout)
 
     Chooser.add_cascade(label='File', menu=itemone)
     Chooser.add_command(label='Add', command=appointment)
     Chooser.add_command(label='Update', command=update)
     Chooser.add_command(label='Delete', command=update)
     Chooser.add_command(label='Help')
-    Chooser.add_command(label='Logout')
+    Chooser.add_command(label='Logout', command=logout)
 
     top.config(menu=Chooser)
     top.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
-            
+
+# function to open the appointment window    
 def appointment():
     os.system("python3 appointment.py")
 
+# function to open the update window  
 def update():
     os.system("python3 update.py")
 
+# function to open the display window  
 def display():
     os.system("python3 display.py")
 
