@@ -47,6 +47,9 @@ class App:
         # button to login
         self.submit = Button(text="Login", width=20, height=2, bg='steelblue', command=self.login)
         self.submit.place(x=160, y=170)
+        # self.submit.bind('<Return>', self.login)
+        # self.grid()
+        # self.submit.bind('<Button-1>', self.parse)
 
     # function to login
     def login(self):
@@ -77,7 +80,7 @@ def drawWin():
     Chooser = Menu()
     itemone = Menu()
 
-    itemone.add_command(label='Add Appointment')
+    itemone.add_command(label='Add Appointment',)
     itemone.add_command(label='Edit Appointment')
     itemone.add_command(label='Delete Appointment')
     itemone.add_separator()
