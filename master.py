@@ -8,6 +8,7 @@ except ImportError:
     import tkinter as tk
 import sqlite3
 import tkinter.messagebox
+import os
 
 # import python files
 # import appointment
@@ -47,9 +48,7 @@ class App:
         # button to login
         self.submit = Button(text="Login", width=20, height=2, bg='steelblue', command=self.login)
         self.submit.place(x=160, y=170)
-        # self.submit.bind('<Return>', self.login)
-        # self.grid()
-        # self.submit.bind('<Button-1>', self.parse)
+        self.submit.bind('<Return>', self.login)
 
     # function to login
     def login(self):
@@ -80,23 +79,31 @@ def drawWin():
     Chooser = Menu()
     itemone = Menu()
 
-    itemone.add_command(label='Add Appointment',)
-    itemone.add_command(label='Edit Appointment')
-    itemone.add_command(label='Delete Appointment')
+    itemone.add_command(label='Add Appointment',command=appointment)
+    itemone.add_command(label='Edit Appointment', command=update)
+    itemone.add_command(label='Delete Appointment', command=update)
     itemone.add_separator()
     itemone.add_command(label='Help')
-    itemone.add_command(label='Exit')
+    itemone.add_command(label='Logout')
 
     Chooser.add_cascade(label='File', menu=itemone)
-    Chooser.add_command(label='Add')
-    Chooser.add_command(label='Update')
-    Chooser.add_command(label='Delete')
+    Chooser.add_command(label='Add', command=appointment)
+    Chooser.add_command(label='Update', command=update)
+    Chooser.add_command(label='Delete', command=update)
     Chooser.add_command(label='Help')
-    Chooser.add_command(label='Exit')
+    Chooser.add_command(label='Logout')
 
     top.config(menu=Chooser)
     top.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
             
+def appointment():
+    os.system("python3 appointment.py")
+
+def update():
+    os.system("python3 update.py")
+
+def display():
+    os.system("python3 display.py")
 
 root = tk.Tk()
 b = App(root)
