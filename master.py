@@ -125,7 +125,7 @@ root.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
 
 def hide_root():
     # Hide root window
-    root.iconify()
+    root.withdraw()
 
 def show_root():
     # Show root window
