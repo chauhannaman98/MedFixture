@@ -136,7 +136,6 @@ def writeTofile(data, filename):
     # Convert binary data to proper format and write it on Hard Disk
     with open(filename, 'wb') as file:
         file.write(data)
-    print("Stored blob data into: ", filename, "\n")
 
 def readBlobData(empId):
     sql_fetch_blob_query = "SELECT * from credentials where id = ?"
@@ -146,9 +145,7 @@ def readBlobData(empId):
         print("Id = ", row[0], "Name = ", row[1])
         name  = row[1]
         photo = row[4]
-        print(photo)
 
-        print("Storing employee image and resume on disk \n")
         photoPath = "/home/techmirtz/projects/Python Project Sem 6/Hospital-Management-System/resources/" + name + ".jpg"
         writeTofile(photo, photoPath)
 
