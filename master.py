@@ -77,8 +77,10 @@ def drawWin():
 
     # function to close the top window
     def logout():
-        top.destroy()
-        show_root()
+        MsgBox = tk.messagebox.askquestion('Logout Application','Are you sure you want to logout?', icon='warning')
+        if MsgBox == 'yes':
+            top.destroy()
+            show_root()
     
     # menu bar
     Chooser = Menu()
