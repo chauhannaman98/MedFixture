@@ -9,6 +9,7 @@ except ImportError:
 import sqlite3
 import tkinter.messagebox
 import os, sys
+# from PIL import Image, ImageTk
 
 conn = sqlite3.connect('database.db')
 c = conn.cursor()
@@ -63,6 +64,7 @@ class App:
 
         if self.db_pass == self.password:
             tkinter.messagebox.showinfo("Login Successful", "Hello "+self.db_name+"! You have successfully logged in as " + self.db_designation)
+            readBlobData(self.id)
             drawWin()
         else:
             tkinter.messagebox.showerror("Login Unsuccessful", "Invalid credentials! Please login again")
@@ -129,6 +131,26 @@ def display():
     elif sys.platform.startswith('win32'):
         print("OS = win32")
         os.system("python display.py")
+
+def writeTofile(data, filename):
+    # Convert binary data to proper format and write it on Hard Disk
+    with open(filename, 'wb') as file:
+        file.write(data)
+    print("Stored blob data into: ", filename, "\n")
+
+def readBlobData(empId):
+    sql_fetch_blob_query = "SELECT * from credentials where id = ?"
+    c.execute(sql_fetch_blob_query, (empId,))
+    record = c.fetchall()
+    for row in record:
+        print("Id = ", row[0], "Name = ", row[1])
+        name  = row[1]
+        photo = row[4]
+        print(photo)
+
+        print("Storing employee image and resume on disk \n")
+        photoPath = "/home/techmirtz/projects/Python Project Sem 6/Hospital-Management-System/resources/" + name + ".jpg"
+        writeTofile(photo, photoPath)
 
 root = tk.Tk()
 b = App(root)
