@@ -106,7 +106,7 @@ class App:
     def logout(self, top):
         MsgBox = tk.messagebox.askquestion('Logout Application','Are you sure you want to logout?', icon='warning')
         if MsgBox == 'yes':
-            self.path = self.name + ".jpeg"
+            self.path = self.name + ".jpg"
             deleteProfilePic(self.path)
             self.destroyTop(top)
             show_root()
@@ -152,7 +152,7 @@ class App:
             self.name  = row[1]
             self.photo = row[4]
 
-            self.photoPath = "/home/techmirtz/projects/Python Project Sem 6/Hospital-Management-System/" + self.name + ".jpeg"
+            self.photoPath = "/home/techmirtz/projects/Python Project Sem 6/Hospital-Management-System/" + self.name + ".jpg"
             print(self.photoPath)
             self.writeTofile()
 
