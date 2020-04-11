@@ -9,6 +9,7 @@ except ImportError:
 import sqlite3
 import tkinter.messagebox
 import os, sys
+# from PIL import Image, ImageTk
 
 conn = sqlite3.connect('database.db')
 c = conn.cursor()
@@ -63,70 +64,101 @@ class App:
 
         if self.db_pass == self.password:
             tkinter.messagebox.showinfo("Login Successful", "Hello "+self.db_name+"! You have successfully logged in as " + self.db_designation)
-            drawWin()
+            self.drawWin()
         else:
             tkinter.messagebox.showerror("Login Unsuccessful", "Invalid credentials! Please login again")
     
-def drawWin():
-    top = Toplevel() 
-    top.geometry("480x320+0+0") 
-    top.title("Welcome") 
+    #function to draw toplevel window
+    def drawWin(self):
+        self.readBlobData()
+        top = Toplevel() 
+        top.geometry("480x320+0+0") 
+        top.title("Welcome") 
 
-    # Hide root window
-    hide_root()
+        # Hide root window
+        hide_root()
+        
+        # menu bar
+        Chooser = Menu()
+        itemone = Menu()
+
+        itemone.add_command(label='Add Appointment', command=self.appointment)
+        itemone.add_command(label='Edit Appointment', command=self.update)
+        itemone.add_command(label='Delete Appointment', command=self.update)
+        itemone.add_separator()
+        itemone.add_command(label='Help')
+        itemone.add_command(label='Logout', command=lambda: self.logout(top))
+
+        Chooser.add_cascade(label='File', menu=itemone)
+        Chooser.add_command(label='Add', command=self.appointment)
+        Chooser.add_command(label='Update', command=self.update)
+        Chooser.add_command(label='Delete', command=self.update)
+        Chooser.add_command(label='Help')
+        Chooser.add_command(label='Logout', command=lambda: self.logout(top))
+
+        top.config(menu=Chooser)
+        top.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
+
+    def destroyTop(self, top):
+        top.destroy()
 
     # function to close the top window
-    def logout():
-        top.destroy()
-        show_root()
-    
-    # menu bar
-    Chooser = Menu()
-    itemone = Menu()
+    def logout(self, top):
+        MsgBox = tk.messagebox.askquestion('Logout Application','Are you sure you want to logout?', icon='warning')
+        if MsgBox == 'yes':
+            self.path = self.name + ".jpeg"
+            deleteProfilePic(self.path)
+            self.destroyTop(top)
+            show_root()
 
-    itemone.add_command(label='Add Appointment', command=appointment)
-    itemone.add_command(label='Edit Appointment', command=update)
-    itemone.add_command(label='Delete Appointment', command=update)
-    itemone.add_separator()
-    itemone.add_command(label='Help')
-    itemone.add_command(label='Logout', command=logout)
+    # function to open the appointment window    
+    def appointment(self):
+        if sys.platform.startswith('linux'):
+            print("OS = linux")
+            os.system("python3 appointment.py")
+        elif sys.platform.startswith('win32'):
+            print("OS = win32")
+            os.system("python appointment.py")
 
-    Chooser.add_cascade(label='File', menu=itemone)
-    Chooser.add_command(label='Add', command=appointment)
-    Chooser.add_command(label='Update', command=update)
-    Chooser.add_command(label='Delete', command=update)
-    Chooser.add_command(label='Help')
-    Chooser.add_command(label='Logout', command=logout)
+    # function to open the update window  
+    def update(self):
+        if sys.platform.startswith('linux'):
+            print("OS = linux")
+            os.system("python3 update.py")
+        elif sys.platform.startswith('win32'):
+            print("OS = win32")
+            os.system("python update.py")
 
-    top.config(menu=Chooser)
-    top.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
+    # function to open the display window  
+    def display(self):
+        if sys.platform.startswith('linux'):
+            print("OS = linux")
+            os.system("python3 display.py")
+        elif sys.platform.startswith('win32'):
+            print("OS = win32")
+            os.system("python display.py")
 
-# function to open the appointment window    
-def appointment():
-    if sys.platform.startswith('linux'):
-        print("OS = linux")
-        os.system("python3 appointment.py")
-    elif sys.platform.startswith('win32'):
-        print("OS = win32")
-        os.system("python appointment.py")
+    def writeTofile(self):
+        # Convert binary data to proper format and write it on Hard Disk
+        with open(self.photoPath, 'wb') as file:
+            file.write(self.photo)
 
-# function to open the update window  
-def update():
-    if sys.platform.startswith('linux'):
-        print("OS = linux")
-        os.system("python3 update.py")
-    elif sys.platform.startswith('win32'):
-        print("OS = win32")
-        os.system("python update.py")
+    def readBlobData(self):
+        sql_fetch_blob_query = "SELECT * from credentials where id = ?"
+        c.execute(sql_fetch_blob_query, (self.id,))
+        self.record = c.fetchall()
+        for row in self.record:
+            print("Id = ", row[0], "Name = ", row[1])
+            self.name  = row[1]
+            self.photo = row[4]
 
-# function to open the display window  
-def display():
-    if sys.platform.startswith('linux'):
-        print("OS = linux")
-        os.system("python3 display.py")
-    elif sys.platform.startswith('win32'):
-        print("OS = win32")
-        os.system("python display.py")
+            self.photoPath = "/home/techmirtz/projects/Python Project Sem 6/Hospital-Management-System/" + self.name + ".jpeg"
+            print(self.photoPath)
+            self.writeTofile()
+
+def deleteProfilePic(filepath):
+    print("Deleting: "+filepath)
+    os.remove(filepath)
 
 root = tk.Tk()
 b = App(root)
