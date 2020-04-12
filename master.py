@@ -9,7 +9,7 @@ except ImportError:
 import sqlite3
 import tkinter.messagebox
 import os, sys
-# from PIL import Image, ImageTk
+from PIL import Image, ImageTk
 
 conn = sqlite3.connect('database.db')
 c = conn.cursor()
@@ -70,13 +70,13 @@ class App:
     
     #function to draw toplevel window
     def drawWin(self):
-        self.readBlobData()
+        # hiding root window
+        hide_root()
+
+        # drawing toplevel window
         top = Toplevel() 
         top.geometry("480x320+0+0") 
         top.title("Welcome") 
-
-        # Hide root window
-        hide_root()
         
         # menu bar
         Chooser = Menu()
@@ -98,6 +98,8 @@ class App:
 
         top.config(menu=Chooser)
         top.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
+        
+        self.drawImage(top)
 
     def destroyTop(self, top):
         top.destroy()
@@ -143,7 +145,7 @@ class App:
         with open(self.photoPath, 'wb') as file:
             file.write(self.photo)
 
-    def readBlobData(self):
+    def drawImage(self, top):
         sql_fetch_blob_query = "SELECT * from credentials where id = ?"
         c.execute(sql_fetch_blob_query, (self.id,))
         self.record = c.fetchall()
@@ -154,7 +156,16 @@ class App:
 
             self.photoPath = "/home/techmirtz/projects/Python Project Sem 6/Hospital-Management-System/" + self.name + ".jpg"
             print(self.photoPath)
+
+            # save file to directory
             self.writeTofile()
+            
+            self.file = self.name + ".jpg"
+            # drawing image to top window
+            render = ImageTk.PhotoImage(self.file)
+            img = Label(self, image=render)
+            img.image = render
+            img.place(x=0, y=0)
 
 def deleteProfilePic(filepath):
     print("Deleting: "+filepath)
