@@ -46,27 +46,30 @@ class App:
         # button to login
         self.submit = Button(text="Login", width=20, height=2, bg='steelblue', command=self.login)
         self.submit.place(x=160, y=170)
-        self.submit.bind('<Return>', self.login)
 
     # function to login
-    def login(self):
+    def login(self, event):
         self.id = self.login_id_ent.get()
         self.password = self.password_ent.get()
-        self.login_id_ent.delete(0, END)
-        self.password_ent.delete(0, END)
-        sql = "SELECT * FROM credentials WHERE id LIKE ?"
-        self.input = str(self.id)
-        self.res = c.execute(sql, (self.input,))
-        for self.row in self.res:
-            self.db_name = self.row[1]
-            self.db_pass = self.row[2]
-            self.db_designation = self.row[3]
-
-        if self.db_pass == self.password:
-            tkinter.messagebox.showinfo("Login Successful", "Hello "+self.db_name+"! You have successfully logged in as " + self.db_designation)
-            self.drawWin()
+        
+        if self.id=="" or self.password=="":
+            tkinter.messagebox.showwarning("All credentials required","Please enter all fields. Fields marked (*) are required.")
         else:
-            tkinter.messagebox.showerror("Login Unsuccessful", "Invalid credentials! Please login again")
+            self.login_id_ent.delete(0, END)
+            self.password_ent.delete(0, END)
+            sql = "SELECT * FROM credentials WHERE id LIKE ?"
+            self.input = str(self.id)
+            self.res = c.execute(sql, (self.input,))
+            for self.row in self.res:
+                self.db_name = self.row[1]
+                self.db_pass = self.row[2]
+                self.db_designation = self.row[3]
+
+            if self.db_pass == self.password:
+                tkinter.messagebox.showinfo("Login Successful", "Hello "+self.db_name+"! You have successfully logged in as " + self.db_designation)
+                self.drawWin()
+            else:
+                tkinter.messagebox.showerror("Login Unsuccessful", "Invalid credentials! Please login again")
     
     #function to draw toplevel window
     def drawWin(self):
@@ -166,6 +169,7 @@ root.geometry("540x320+0+0")
 root.resizable(False, False)
 root.title("Techmirtz Hospital Appointment Application - Login Window")
 root.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
+root.bind('<Return>', b.login)
 
 def hide_root():
     # Hide root window
