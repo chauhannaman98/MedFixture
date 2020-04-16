@@ -182,11 +182,12 @@ class App:
             self.canvas.create_image(0,0, anchor=NW, image=self.img)    
             self.canvas.image = self.img
 
-            deleteProfilePic(self.fileName)
+            # deleteProfilePic(self.fileName)
+            os.remove(self.fileName)
 
-def deleteProfilePic(filepath):
-    # print("Deleting: "+filepath)
-    os.remove(filepath)
+# def deleteProfilePic(filepath):
+#     print("Deleting: "+filepath)
+#     os.remove(filepath)
 
 root = tk.Tk()
 b = App(root)
