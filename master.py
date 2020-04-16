@@ -109,7 +109,6 @@ class App:
         MsgBox = tk.messagebox.askquestion('Logout Application','Are you sure you want to logout?', icon='warning')
         if MsgBox == 'yes':
             self.path = self.name + ".jpg"
-            deleteProfilePic(self.path)
             self.destroyTop(top)
             show_root()
 
@@ -160,12 +159,16 @@ class App:
             # save file to directory
             self.writeTofile()
             
-            self.file = self.name + ".jpg"
-            # drawing image to top window
-            render = ImageTk.PhotoImage(self.file)
-            img = Label(self, image=render)
-            img.image = render
-            img.place(x=0, y=0)
+            self.fileName = self.name + ".jpg"
+            file_name = str(self.fileName)
+
+            self.canvas = Canvas(top, width=120, height=120)  
+            self.canvas.place(x=5, y=5)
+            self.img = ImageTk.PhotoImage(Image.open(file_name)) 
+            self.canvas.create_image(0,0, anchor=NW, image=self.img)    
+            self.canvas.image = self.img
+
+            deleteProfilePic(self.fileName)
 
 def deleteProfilePic(filepath):
     print("Deleting: "+filepath)
