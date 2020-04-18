@@ -18,6 +18,15 @@ class App:
     def __init__(self, master):
         self.master = master
 
+        # menu bar
+        Chooser = Menu()
+
+        Chooser.add_command(label='About')
+        Chooser.add_command(label='Help')
+        Chooser.add_command(label='Exit', command=lambda: exitRoot(root))
+
+        root.config(menu=Chooser)
+
         # labels for window
         self.space = Label(text="")
         self.space.pack()
@@ -204,5 +213,10 @@ def hide_root():
 def show_root():
     # Show root window
     root.deiconify()
+
+def exitRoot(root):
+    MsgBox = tk.messagebox.askquestion('Exit Application','Do you really want to exit?', icon='warning')
+    if MsgBox == 'yes':
+        root.destroy()
 
 root.mainloop()
