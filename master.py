@@ -8,7 +8,7 @@ except ImportError:
     import tkinter as tk
 import sqlite3
 import tkinter.messagebox
-import os, sys
+import os, sys, webbrowser
 from PIL import Image, ImageTk
 
 conn = sqlite3.connect('database.db')
@@ -198,7 +198,7 @@ class App:
 
         # photo = PhotoImage(file = "resources/github-logo.png")
         # photoimage = photo.subsample(3, 3)
-        githubButton = Button(about, text = 'Open sourced on GitHub', width=20, height=2, bg='black', fg='white')
+        githubButton = Button(about, text = 'Open sourced on GitHub', width=20, height=2, bg='black', fg='white', command=lambda : webbrowser.open('https://github.com/chauhannaman98/Hospital-Management-System'))
         githubButton.place(x=145, y=260)
 
 # def deleteProfilePic(filepath):
