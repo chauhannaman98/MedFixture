@@ -8,7 +8,7 @@ except ImportError:
     import tkinter as tk
 import sqlite3
 import tkinter.messagebox
-import os, sys
+import os, sys, webbrowser
 from PIL import Image, ImageTk
 
 conn = sqlite3.connect('database.db')
@@ -18,15 +18,17 @@ class App:
     def __init__(self, master):
         self.master = master
 
-        # labels for window
-        self.space = Label(text="")
-        self.space.pack()
-        
-        self.loginLabel = Label(text="Enter login credentials", font=('arial 14 bold'), fg='black')
-        self.loginLabel.pack()
+        # menu bar
+        Chooser = Menu()
 
-        self.space2 = Label(text="")
-        self.space2.place(x=50, y=100)
+        Chooser.add_command(label='About', command=self.aboutMaster)
+        Chooser.add_command(label='Help')
+        Chooser.add_command(label='Exit', command=lambda: exitRoot(root))
+
+        root.config(menu=Chooser)
+        
+        self.loginLabel = Label(text="\nEnter login credentials\n", font=('arial 14 bold'), fg='black')
+        self.loginLabel.pack()
 
         # login ID
         self.login_id = Label(text="Login ID*", font=('arial 12'), fg='black')
@@ -185,6 +187,20 @@ class App:
             # deleteProfilePic(self.fileName)
             os.remove(self.fileName)
 
+    def aboutMaster(self):
+        about = Toplevel()
+        about.geometry("480x320+0+0") 
+        about.title("About")
+        about.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
+
+        loginLabel = Label(about, text="The application has been created using tkinter for GUI. \nThe data has been saved and accessed using SQLite3.\n\n", font=('arial 11'), fg='black')
+        loginLabel.place(relx=0.5, rely=0.5, anchor=CENTER)
+
+        # photo = PhotoImage(file = "resources/github-logo.png")
+        # photoimage = photo.subsample(3, 3)
+        githubButton = Button(about, text = 'Open sourced on GitHub', width=20, height=2, bg='black', fg='white', command=lambda : webbrowser.open('https://github.com/chauhannaman98/Hospital-Management-System'))
+        githubButton.place(x=145, y=260)
+
 # def deleteProfilePic(filepath):
 #     print("Deleting: "+filepath)
 #     os.remove(filepath)
@@ -204,5 +220,10 @@ def hide_root():
 def show_root():
     # Show root window
     root.deiconify()
+
+def exitRoot(root):
+    MsgBox = tk.messagebox.askquestion('Exit Application','Do you really want to exit?', icon='warning')
+    if MsgBox == 'yes':
+        root.destroy()
 
 root.mainloop()
