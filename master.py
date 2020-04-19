@@ -193,13 +193,17 @@ class App:
         about.title("About")
         about.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
 
-        loginLabel = Label(about, text="The application has been created using tkinter for GUI. \nThe data has been saved and accessed using SQLite3.\n\n", font=('arial 11'), fg='black')
-        loginLabel.place(relx=0.5, rely=0.5, anchor=CENTER)
+        self.loginLabel = Label(about, text="\n\n\n\nThe application has been created using tkinter for GUI. \nThe data has been saved and accessed using SQLite3.\n\nMade by:", font=('arial 11'), fg='black')
+        self.loginLabel.pack()
 
-        # photo = PhotoImage(file = "resources/github-logo.png")
-        # photoimage = photo.subsample(3, 3)
-        githubButton = Button(about, text = 'Open sourced on GitHub', width=20, height=2, bg='black', fg='white', command=lambda : webbrowser.open('https://github.com/chauhannaman98/Hospital-Management-System'))
-        githubButton.place(x=145, y=260)
+        self.gitProfile = Label(about, text="Naman Chauhan", fg='blue', font=('arial 11 underline'), cursor="hand2")
+        self.gitProfile.place(x=180, y=180)
+        self.gitProfile.bind("<Button-1>", lambda e: webbrowser.open("https://www.github.com/chauhannaman98"))
+
+        self.photo = PhotoImage(file = "resources/githubLogo.png")
+        self.photoimage = self.photo.subsample(10, 10)
+        self.githubButton = Button(about, text = 'Open sourced on GitHub', image=self.photoimage, compound=LEFT, width=220, height=40, bg='black', fg='white', command=lambda : webbrowser.open('https://github.com/chauhannaman98/Hospital-Management-System'))
+        self.githubButton.place(x=110, y=250)
 
 # def deleteProfilePic(filepath):
 #     print("Deleting: "+filepath)
