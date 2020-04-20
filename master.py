@@ -89,14 +89,12 @@ class App:
         itemone.add_command(label='Edit Appointment', command=self.update)
         itemone.add_command(label='Delete Appointment', command=self.update)
         itemone.add_separator()
-        itemone.add_command(label='Help')
         itemone.add_command(label='Logout', command=lambda: self.logout(top))
 
         Chooser.add_cascade(label='File', menu=itemone)
         Chooser.add_command(label='Add', command=self.appointment)
         Chooser.add_command(label='Update', command=self.update)
         Chooser.add_command(label='Delete', command=self.update)
-        Chooser.add_command(label='Help')
         Chooser.add_command(label='Logout', command=lambda: self.logout(top))
 
         top.config(menu=Chooser)
