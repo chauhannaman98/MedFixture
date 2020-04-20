@@ -91,29 +91,33 @@ class App:
         itemone.add_command(label='Edit Appointment', command=self.update)
         itemone.add_command(label='Delete Appointment', command=self.update)
         itemone.add_separator()
-        itemone.add_command(label='Help')
         itemone.add_command(label='Logout', command=lambda: self.logout(top))
 
         Chooser.add_cascade(label='File', menu=itemone)
         Chooser.add_command(label='Add', command=self.appointment)
         Chooser.add_command(label='Update', command=self.update)
         Chooser.add_command(label='Delete', command=self.update)
-        Chooser.add_command(label='Help')
         Chooser.add_command(label='Logout', command=lambda: self.logout(top))
 
         top.config(menu=Chooser)
         top.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
+
+        self.left = Frame(top, width=130, height=130, bd=1, relief=RAISED)
+        self.left.place(x=5, y=5)
+
+        self.right = Frame(top, width=320, height=150)
+        self.right.place(x=150, y=5)
         
         self.drawImage(top)
 
-        self.userlogin = Label(top, text="You are logged in as:", font=('arial 12 bold'), fg='black')
-        self.userlogin.place(x=5, y=150)
+        self.userlogin = Label(self.right, text="You are logged in as:", font=('arial 12 bold'), fg='black')
+        self.userlogin.place(x=5, y=20)
 
-        self.Name = Label(top, text="Name: " + self.db_name, font=('arial 12 bold'), fg='black')
-        self.Name.place(x=5, y=180)
+        self.Name = Label(self.right, text="Name: " + self.db_name, font=('arial 12'), fg='black')
+        self.Name.place(x=5, y=50)
 
-        self.Name = Label(top, text="Designation: " + self.db_designation, font=('arial 12 bold'), fg='black')
-        self.Name.place(x=5, y=210)
+        self.Name = Label(self.right, text="Designation: " + self.db_designation, font=('arial 12'), fg='black')
+        self.Name.place(x=5, y=80)
 
     def destroyTop(self, top):
         top.destroy()
@@ -178,8 +182,8 @@ class App:
             file_name = str(self.fileName)
 
             # draw image on canvas
-            self.canvas = Canvas(top, width=120, height=120)  
-            self.canvas.place(x=5, y=5)
+            self.canvas = Canvas(self.left, width=120, height=120)  
+            self.canvas.pack()
             self.img = ImageTk.PhotoImage(Image.open(file_name)) 
             self.canvas.create_image(0,0, anchor=NW, image=self.img)    
             self.canvas.image = self.img
