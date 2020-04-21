@@ -40,14 +40,16 @@ class App:
 
         # entries for labels
         self.login_id_ent = Entry(width=20)
-        self.login_id_ent.place(x=260, y=72)
+        self.login_id_ent.place(x=280, y=72)
 
         self.password_ent = Entry(width=20, show='*')
-        self.password_ent.place(x=260, y=122)
+        self.password_ent.place(x=280, y=122)
 
         # button to login
-        self.submit = Button(text="Login", width=20, height=2, bg='steelblue', command=self.login)
-        self.submit.place(x=160, y=170)
+        self.loginShield = PhotoImage(file = "resources/user-shield-100.png")
+        self.buttonImage = self.loginShield.subsample(3, 3)
+        self.submit = Button(text = 'Login', image=self.buttonImage, compound=LEFT, width=120, height=40, bg='steelblue', command=self.login)
+        self.submit.place(x=160, y=190)
 
     # function to login
     def login(self, event):
