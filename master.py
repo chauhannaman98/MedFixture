@@ -8,7 +8,7 @@ except ImportError:
     import tkinter as tk
 import sqlite3
 import tkinter.messagebox
-import os, sys
+import os, sys, webbrowser
 from PIL import Image, ImageTk
 
 conn = sqlite3.connect('database.db')
@@ -18,15 +18,17 @@ class App:
     def __init__(self, master):
         self.master = master
 
-        # labels for window
-        self.space = Label(text="")
-        self.space.pack()
-        
-        self.loginLabel = Label(text="Enter login credentials", font=('arial 14 bold'), fg='black')
-        self.loginLabel.pack()
+        # menu bar
+        Chooser = Menu()
 
-        self.space2 = Label(text="")
-        self.space2.place(x=50, y=100)
+        Chooser.add_command(label='About', command=self.aboutMaster)
+        Chooser.add_command(label='Help')
+        Chooser.add_command(label='Exit', command=lambda: exitRoot(root))
+
+        root.config(menu=Chooser)
+        
+        self.loginLabel = Label(text="\nEnter login credentials\n", font=('arial 14 bold'), fg='black')
+        self.loginLabel.pack()
 
         # login ID
         self.login_id = Label(text="Login ID*", font=('arial 12'), fg='black')
@@ -38,14 +40,16 @@ class App:
 
         # entries for labels
         self.login_id_ent = Entry(width=20)
-        self.login_id_ent.place(x=260, y=72)
+        self.login_id_ent.place(x=280, y=72)
 
         self.password_ent = Entry(width=20, show='*')
-        self.password_ent.place(x=260, y=122)
+        self.password_ent.place(x=280, y=122)
 
         # button to login
-        self.submit = Button(text="Login", width=20, height=2, bg='steelblue', command=self.login)
-        self.submit.place(x=160, y=170)
+        self.loginShield = PhotoImage(file = "resources/user-shield-100.png")
+        self.buttonImage = self.loginShield.subsample(3, 3)
+        self.submit = Button(text = 'Login', image=self.buttonImage, compound=LEFT, width=120, height=40, bg='steelblue', command=self.login)
+        self.submit.place(x=160, y=190)
 
     # function to login
     def login(self, event):
@@ -189,6 +193,24 @@ class App:
             # deleteProfilePic(self.fileName)
             os.remove(self.fileName)
 
+    def aboutMaster(self):
+        about = Toplevel()
+        about.geometry("480x320+0+0") 
+        about.title("About")
+        about.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
+
+        self.loginLabel = Label(about, text="\n\n\n\nThe application has been created using tkinter for GUI. \nThe data has been saved and accessed using SQLite3.\n\nMade by:", font=('arial 11'), fg='black')
+        self.loginLabel.pack()
+
+        self.gitProfile = Label(about, text="Naman Chauhan", fg='blue', font=('arial 11 underline'), cursor="hand2")
+        self.gitProfile.place(x=180, y=180)
+        self.gitProfile.bind("<Button-1>", lambda e: webbrowser.open("https://www.github.com/chauhannaman98"))
+
+        self.photo = PhotoImage(file = "resources/github-100.png")
+        self.photoimage = self.photo.subsample(3, 3)
+        self.githubButton = Button(about, text = 'Open sourced on GitHub', image=self.photoimage, compound=LEFT, width=220, height=40, bg='black', fg='white', command=lambda : webbrowser.open('https://github.com/chauhannaman98/Hospital-Management-System'))
+        self.githubButton.place(x=110, y=250)
+
 # def deleteProfilePic(filepath):
 #     print("Deleting: "+filepath)
 #     os.remove(filepath)
@@ -208,5 +230,10 @@ def hide_root():
 def show_root():
     # Show root window
     root.deiconify()
+
+def exitRoot(root):
+    MsgBox = tk.messagebox.askquestion('Exit Application','Do you really want to exit?', icon='warning')
+    if MsgBox == 'yes':
+        root.destroy()
 
 root.mainloop()
