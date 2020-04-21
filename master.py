@@ -89,16 +89,17 @@ class App:
         Chooser = Menu()
         itemone = Menu()
 
-        itemone.add_command(label='Add Appointment', command=self.appointment)
-        itemone.add_command(label='Edit Appointment', command=self.update)
-        itemone.add_command(label='Delete Appointment', command=self.update)
+        if self.db_designation == 'System Administrator' or self.db_designation == 'Doctor':
+            itemone.add_command(label='Add Appointment', command=self.appointment)
+            itemone.add_command(label='Edit Appointment', command=self.update)
+            itemone.add_command(label='Delete Appointment', command=self.update)
+        
+        itemone.add_command(label='View Appointment', command=self.display)
         itemone.add_separator()
         itemone.add_command(label='Logout', command=lambda: self.logout(top))
 
         Chooser.add_cascade(label='File', menu=itemone)
-        Chooser.add_command(label='Add', command=self.appointment)
-        Chooser.add_command(label='Update', command=self.update)
-        Chooser.add_command(label='Delete', command=self.update)
+        Chooser.add_command(label='View Appointment', command=self.display)
         Chooser.add_command(label='Logout', command=lambda: self.logout(top))
 
         top.config(menu=Chooser)
