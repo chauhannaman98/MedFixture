@@ -200,8 +200,8 @@ class App:
         self.gitProfile.place(x=180, y=180)
         self.gitProfile.bind("<Button-1>", lambda e: webbrowser.open("https://www.github.com/chauhannaman98"))
 
-        self.photo = PhotoImage(file = "resources/githubLogo.png")
-        self.photoimage = self.photo.subsample(10, 10)
+        self.photo = PhotoImage(file = "resources/github-100.png")
+        self.photoimage = self.photo.subsample(3, 3)
         self.githubButton = Button(about, text = 'Open sourced on GitHub', image=self.photoimage, compound=LEFT, width=220, height=40, bg='black', fg='white', command=lambda : webbrowser.open('https://github.com/chauhannaman98/Hospital-Management-System'))
         self.githubButton.place(x=110, y=250)
 
