@@ -40,14 +40,16 @@ class App:
 
         # entries for labels
         self.login_id_ent = Entry(width=20)
-        self.login_id_ent.place(x=260, y=72)
+        self.login_id_ent.place(x=280, y=72)
 
         self.password_ent = Entry(width=20, show='*')
-        self.password_ent.place(x=260, y=122)
+        self.password_ent.place(x=280, y=122)
 
         # button to login
-        self.submit = Button(text="Login", width=20, height=2, bg='steelblue', command=self.login)
-        self.submit.place(x=160, y=170)
+        self.loginShield = PhotoImage(file = "resources/user-shield-100.png")
+        self.buttonImage = self.loginShield.subsample(3, 3)
+        self.submit = Button(text = 'Login', image=self.buttonImage, compound=LEFT, width=120, height=40, bg='steelblue', command=self.login)
+        self.submit.place(x=160, y=190)
 
     # function to login
     def login(self, event):
@@ -204,8 +206,8 @@ class App:
         self.gitProfile.place(x=180, y=180)
         self.gitProfile.bind("<Button-1>", lambda e: webbrowser.open("https://www.github.com/chauhannaman98"))
 
-        self.photo = PhotoImage(file = "resources/githubLogo.png")
-        self.photoimage = self.photo.subsample(10, 10)
+        self.photo = PhotoImage(file = "resources/github-100.png")
+        self.photoimage = self.photo.subsample(3, 3)
         self.githubButton = Button(about, text = 'Open sourced on GitHub', image=self.photoimage, compound=LEFT, width=220, height=40, bg='black', fg='white', command=lambda : webbrowser.open('https://github.com/chauhannaman98/Hospital-Management-System'))
         self.githubButton.place(x=110, y=250)
 
