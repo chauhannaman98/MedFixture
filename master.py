@@ -49,7 +49,13 @@ class App:
         self.loginShield = PhotoImage(file = "resources/user-shield-100.png")
         self.buttonImage = self.loginShield.subsample(3, 3)
         self.submit = Button(text = 'Login', image=self.buttonImage, compound=LEFT, width=120, height=40, bg='steelblue', command=self.login)
-        self.submit.place(x=160, y=190)
+        self.submit.place(x=170, y=190)
+
+        # button for guest login
+        self.guestAvatar = PhotoImage(file = "resources/guest.png")
+        self.guestImage = self.guestAvatar.subsample(15, 15)
+        self.guestButton = Button(text='Login as Guest',image=self.guestImage, compound=LEFT, width=190, height=40, command=self.guestLogin)
+        self.guestButton.place(x=140, y=280)
 
     # function to login
     def login(self, event):
@@ -75,6 +81,25 @@ class App:
             else:
                 tkinter.messagebox.showerror("Login Unsuccessful", "Invalid credentials! Please login again")
     
+    # function for guest login
+    def guestLogin(self):
+        self.id = "guest"
+        self.password = "00000"
+        
+        sql = "SELECT * FROM credentials WHERE id LIKE ?"
+        self.input = str(self.id)
+        self.res = c.execute(sql, (self.input,))
+        for self.row in self.res:
+            self.db_name = self.row[1]
+            self.db_pass = self.row[2]
+            self.db_designation = self.row[3]
+
+        if self.db_pass == self.password:
+                tkinter.messagebox.showinfo("Login Successful", "Hello "+self.db_name+"! You have successfully logged in as " + self.db_designation)
+                self.drawWin()
+        else:
+            tkinter.messagebox.showerror("Login Unsuccessful", "Invalid credentials! Please login again")
+
     #function to draw toplevel window
     def drawWin(self):
         # hiding root window
@@ -213,7 +238,7 @@ class App:
 
 root = tk.Tk()
 b = App(root)
-root.geometry("540x320+0+0")
+root.geometry("540x380+0+0")
 root.resizable(False, False)
 root.title("Techmirtz Hospital Appointment Application - Login Window")
 root.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
