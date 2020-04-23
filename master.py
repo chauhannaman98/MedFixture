@@ -84,21 +84,11 @@ class App:
     # function for guest login
     def guestLogin(self):
         self.id = "guest"
-        self.password = "00000"
-        
-        sql = "SELECT * FROM credentials WHERE id LIKE ?"
-        self.input = str(self.id)
-        self.res = c.execute(sql, (self.input,))
-        for self.row in self.res:
-            self.db_name = self.row[1]
-            self.db_pass = self.row[2]
-            self.db_designation = self.row[3]
+        self.db_name = "Guest User"
+        self.db_designation = "Guest"
 
-        if self.db_pass == self.password:
-                tkinter.messagebox.showinfo("Login Successful", "Hello "+self.db_name+"! You have successfully logged in as " + self.db_designation)
-                self.drawWin()
-        else:
-            tkinter.messagebox.showerror("Login Unsuccessful", "Invalid credentials! Please login again")
+        tkinter.messagebox.showinfo("Login Successful", "Hello "+self.db_name+"! You have successfully logged in as " + self.db_designation)
+        self.drawWin()
 
     #function to draw toplevel window
     def drawWin(self):
