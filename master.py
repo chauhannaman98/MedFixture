@@ -8,7 +8,7 @@ except ImportError:
     import tkinter as tk
 import sqlite3
 import tkinter.messagebox
-import os, sys, webbrowser
+import os, sys, webbrowser, time
 from PIL import Image, ImageTk
 
 conn = sqlite3.connect('database.db')
@@ -125,6 +125,13 @@ class App:
 
         self.right = Frame(top, width=320, height=150)
         self.right.place(x=150, y=5)
+
+        self.footer = Frame(top, width=480, height=30, bd=1, relief=RAISED, \
+            highlightbackground="black", highlightthickness=1)
+        self.footer.place(x=0, y=290)
+
+        self.timeLabel = Label(self.footer, text="Logged in at "+time.strftime("%I:%M:%S %p"), font=('arial 10'), fg='black')
+        self.timeLabel.place(x=5, y=3)
         
         self.drawImage(top)
 
