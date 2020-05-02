@@ -225,16 +225,31 @@ class App:
         about.title("About")
         about.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
 
-        self.loginLabel = Label(about, text="\n\n\n\nThe application has been created using tkinter for GUI. \nThe data has been saved and accessed using SQLite3.\n\nMade by:", font=('arial 11'), fg='black')
+        self.leftAbout = Frame(about, width=130, height=130)
+        self.leftAbout.place(x=5, y=30)
+
+        self.rightAbout = Frame(about, width=120, height=250)
+        self.rightAbout.place(x=150, y=25)
+
+        self.imgCanvas = Canvas(self.leftAbout, width=120, height=120)  
+        self.imgCanvas.pack()
+        self.img = PhotoImage(file="resources/icon.png") 
+        self.img_sized = self.img.subsample(5,5)
+        self.imgCanvas.create_image(8,8, anchor=NW, image=self.img_sized)    
+        self.imgCanvas.image = self.img
+
+        self.loginLabel = Label(self.rightAbout, text="\nThe application has been created using\ntkinter for GUI.\nThe data has been saved and accessed\nusing SQLite3.\n\nMade by:\n\n\n\n\n",\
+             font=('arial 11'), fg='black')
         self.loginLabel.pack()
 
-        self.gitProfile = Label(about, text="Naman Chauhan", fg='blue', font=('arial 11 underline'), cursor="hand2")
-        self.gitProfile.place(x=180, y=180)
+        self.gitProfile = Label(self.rightAbout, text="Naman Chauhan", fg='blue', font=('arial 11 underline'), cursor="hand2")
+        self.gitProfile.place(x=75, y=130)
         self.gitProfile.bind("<Button-1>", lambda e: webbrowser.open("https://www.github.com/chauhannaman98"))
 
         self.photo = PhotoImage(file = "resources/github-100.png")
         self.photoimage = self.photo.subsample(3, 3)
-        self.githubButton = Button(about, text = 'Open sourced on GitHub', image=self.photoimage, compound=LEFT, width=220, height=40, bg='black', fg='white', command=lambda : webbrowser.open('https://github.com/chauhannaman98/Hospital-Management-System'))
+        self.githubButton = Button(about, text = 'Open sourced on GitHub', image=self.photoimage, compound=LEFT, width=220, height=40,\
+             bg='black', fg='white', command=lambda : webbrowser.open('https://github.com/chauhannaman98/Hospital-Management-System'))
         self.githubButton.place(x=110, y=250)
 
     def whatIsIt(self):
