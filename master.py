@@ -20,9 +20,12 @@ class App:
 
         # menu bar
         Chooser = Menu()
+        itemone = Menu()
 
-        Chooser.add_command(label='About', command=self.aboutMaster)
-        Chooser.add_command(label='Help')
+        itemone.add_command(label='What is it?', command=self.whatIsIt)
+        itemone.add_command(label='About', command=self.aboutMaster)
+
+        Chooser.add_cascade(label='Help', menu=itemone)
         Chooser.add_command(label='Exit', command=lambda: exitRoot(root))
 
         root.config(menu=Chooser)
@@ -221,6 +224,9 @@ class App:
         self.photoimage = self.photo.subsample(3, 3)
         self.githubButton = Button(about, text = 'Open sourced on GitHub', image=self.photoimage, compound=LEFT, width=220, height=40, bg='black', fg='white', command=lambda : webbrowser.open('https://github.com/chauhannaman98/Hospital-Management-System'))
         self.githubButton.place(x=110, y=250)
+
+    def whatIsIt(self):
+        pass
 
 # def deleteProfilePic(filepath):
 #     print("Deleting: "+filepath)
