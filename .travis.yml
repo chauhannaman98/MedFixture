@@ -7,4 +7,4 @@ dist: xenial
 services:
   - xvfb
 
-script: python3 master.py
+script: python master.py
