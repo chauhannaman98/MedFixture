@@ -360,4 +360,7 @@ def exitRoot(root):
     if MsgBox == 'yes':
         root.destroy()
 
-root.mainloop()
+if 'TRAVIS' in os.environ:
+    root.update_idletasks()
+else:
+    root.mainloop()
