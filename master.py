@@ -252,8 +252,26 @@ class App:
              bg='black', fg='white', command=lambda : webbrowser.open('https://github.com/chauhannaman98/Hospital-Management-System'))
         self.githubButton.place(x=110, y=250)
 
+    # window to show 'What is it?'
     def whatIsIt(self):
-        pass
+        whatWindow = Toplevel()
+        whatWindow.geometry("480x320+0+0")
+        whatWindow.title("What is it?")
+        whatWindow.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
+
+        self.imgCanvas = Canvas(whatWindow, width=120, height=120)  
+        self.imgCanvas.place(x=180, y=20)
+        self.img = PhotoImage(file="resources/icon.png") 
+        self.img_sized = self.img.subsample(5,5)
+        self.imgCanvas.create_image(8,8, anchor=NW, image=self.img_sized)    
+        self.imgCanvas.image = self.img
+
+        self.titleLabel = Label(whatWindow, text="MedFixture v1.0", font=('arial 11 bold'), fg='black')
+        self.titleLabel.place(x=180, y=150)
+
+        self.details = Label(whatWindow, text="MedFixture is your interface to book and manage appointments in your hospital's database. You just need to login with proper credentials to get access to the database and manage your appointments with ease.",\
+                    font=('arial 11'), fg='black', wraplength=400, justify='center')
+        self.details.place(x=40, y=180)
 
 # def deleteProfilePic(filepath):
 #     print("Deleting: "+filepath)
