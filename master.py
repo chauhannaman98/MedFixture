@@ -10,6 +10,7 @@ import sqlite3
 import tkinter.messagebox
 import os, sys, webbrowser, time
 from PIL import Image, ImageTk
+from tkinter import ttk
 
 conn = sqlite3.connect('database.db')
 c = conn.cursor()
@@ -279,7 +280,60 @@ class App:
 
     # function for resetting password
     def reset_pass(self):
+        resetWindow = Toplevel()
+        resetWindow.geometry("480x320+0+0")
+        resetWindow.title("Reset my password")
+        resetWindow.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
+
+        tabControl = ttk.Notebook(resetWindow)        
+        secret_ques = ttk.Frame(tabControl) 
+        otp = ttk.Frame(tabControl) 
+        
+        tabControl.add(secret_ques, text ='Secret Question') 
+        tabControl.add(otp, text ='Use OTP') 
+        tabControl.pack(expand = 1, fill ="both") 
+
+        self.id_label = Label(resetWindow, text="Login ID*", font=('arial 11'))
+        self.id_label.place(x=40, y=50)
+        self.id_label_ent = Entry(resetWindow,width=20)
+        self.id_label_ent.place(x=170, y=52)
+
+        '''''''''###Secret Question tab###'''''''''
+        self.ques_label = Label(secret_ques, text="Secret Question*", font=('arial 11'))
+        self.ques_label.place(x=40, y=110)
+
+        # list of questions
+        OptionList = ["What's name of your first pet dog?",
+        "What's your mother's middle name?",
+        "What's your favorite book?"
+        ]
+
+        # OptionMenu
+        self.variable = tk.StringVar(secret_ques)
+        self.variable.set(OptionList[0])
+
+        self.opt = tk.OptionMenu(secret_ques, self.variable, *OptionList)
+        self.opt.config(width=30, font=('arial', 11))
+        self.opt.place(x=170, y=103)
+
+        # print(self.variable.get())
+
+        self.answer = Label(secret_ques, text="Your Answer*", font=('arial 11'))
+        self.answer.place(x=40, y=150)
+
+        self.answer_ent = Entry(secret_ques, width=20)
+        self.answer_ent.place(x=170, y=150)
+
+        # button to submit the answers
+        self.submit_answer = Button(secret_ques, text="Submit", font=('arial 11'), width=12, height=2, command=self.subAnswer)
+        self.submit_answer.place(x=150, y=200)
+
+        '''''''''###OTP tab###'''''''''
+        # to do:
+    
+    def subAnswer(self):
         pass
+        # to do:
 
 # def deleteProfilePic(filepath):
 #     print("Deleting: "+filepath)
