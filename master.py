@@ -48,17 +48,21 @@ class App:
         self.password_ent = Entry(width=20, show='*')
         self.password_ent.place(x=280, y=122)
 
+        # button for reset password
+        self.reset_password = Button(text="Forgot password", bg='#aed4eb', command=self.reset_pass)
+        self.reset_password.place(x=310, y=160)
+
         # button to login
         self.loginShield = PhotoImage(file = "resources/user-shield-100.png")
         self.buttonImage = self.loginShield.subsample(3, 3)
         self.submit = Button(text = 'Login', image=self.buttonImage, compound=LEFT, width=120, height=40, bg='steelblue', command=self.login)
-        self.submit.place(x=170, y=190)
+        self.submit.place(x=170, y=200)
 
         # button for guest login
         self.guestAvatar = PhotoImage(file = "resources/guest.png")
         self.guestImage = self.guestAvatar.subsample(15, 15)
         self.guestButton = Button(text='Login as Guest',image=self.guestImage, compound=LEFT, width=190, height=40, command=self.guestLogin)
-        self.guestButton.place(x=140, y=280)
+        self.guestButton.place(x=140, y=290)
 
     # function to login
     def login(self, event):
@@ -272,6 +276,10 @@ class App:
         self.details = Label(whatWindow, text="MedFixture is your interface to book and manage appointments in your hospital's database. You just need to login with proper credentials to get access to the database and manage your appointments with ease.",\
                     font=('arial 11'), fg='black', wraplength=400, justify='center')
         self.details.place(x=40, y=180)
+
+    # function for resetting password
+    def reset_pass(self):
+        pass
 
 # def deleteProfilePic(filepath):
 #     print("Deleting: "+filepath)
