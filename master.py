@@ -334,9 +334,15 @@ class App:
         self.answer_ent = Entry(secret_ques, width=20)
         self.answer_ent.place(x=170, y=150)
 
+        self.new_pass = Label(secret_ques,text="New Password*", font=('arial 11'), fg='black')
+        self.new_pass.place(x=40, y=190)
+
+        self.new_pass_ent = Entry(secret_ques, width=20, show='*')
+        self.new_pass_ent.place(x=170, y =190)
+
         # button to submit the answers
         self.submit_answer = Button(secret_ques, text="Submit", font=('arial 11'), width=12, height=2, command=self.subAnswer)
-        self.submit_answer.place(x=150, y=200)
+        self.submit_answer.place(x=150, y=230)
 
         '''''''''###OTP tab###'''''''''
         # to do:
@@ -346,20 +352,17 @@ class App:
         self.ans = self.answer_ent.get()
 
         n = int(self.ques_num)
-        # self.secretIndex = 5+n*2
-        # self.ansIndex = 6+n*2
         sql_fetch_answer_query = "SELECT * FROM credentials where id = ?"
         c.execute(sql_fetch_answer_query, (self.forgetID,))
         self.record = c.fetchall()
         for row in self.record:
-            self.name  = row[1]
             self.secret_status = row[5+n*2]
             self.secret_answer = row[6+n*2]
-            # print(self.secret_answer)
-            # print(self.ansIndex)
 
         if self.secret_status and self.secret_answer == self.ans:
-            print("Correct secret answer")
+            sql_pass_update_query = "UPDATE credentials SET pass=? where id=?"
+            c.execute(sql_pass_update_query, (self.new_pass_ent.get(), self.forgetID, ))
+            conn.commit()
         else:
             print("Incorrect secret answer")
 
