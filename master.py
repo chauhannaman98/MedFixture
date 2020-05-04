@@ -205,7 +205,7 @@ class App:
             self.name  = row[1]
             self.photo = row[4]
 
-            self.photoPath = "/home/techmirtz/projects/Python Project Sem 6/Hospital-Management-System/" + self.name + ".jpg"
+            self.photoPath = "/home/techmirtz/projects/Python Project Sem 6/MedFixture/" + self.name + ".jpg"
             # print(self.photoPath)
 
             # save file to directory
