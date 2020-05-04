@@ -304,7 +304,7 @@ class App:
 
         # list of questions
         OptionList = ["What's name of your first pet dog?",
-        "What's your mother's middle name?",
+        "What's your father's middle name?",
         "What's your favorite book?"
         ]
 
@@ -315,8 +315,18 @@ class App:
         self.opt = tk.OptionMenu(secret_ques, self.variable, *OptionList)
         self.opt.config(width=30, font=('arial', 11))
         self.opt.place(x=170, y=103)
+        self.ques_num = 0
 
-        # print(self.variable.get())
+        # callback method
+        def callback(*args):  
+            for i in range(len(OptionList)):    # assign question number to for query in the database
+                if OptionList[i] == self.variable.get():
+                    break
+
+            self.ques_num = i
+            print(str(self.ques_num)+": "+OptionList[i])
+
+        self.variable.trace("w", callback)
 
         self.answer = Label(secret_ques, text="Your Answer*", font=('arial 11'))
         self.answer.place(x=40, y=150)
@@ -332,8 +342,26 @@ class App:
         # to do:
     
     def subAnswer(self):
-        pass
-        # to do:
+        self.forgetID = self.id_label_ent.get()
+        self.ans = self.answer_ent.get()
+
+        n = int(self.ques_num)
+        # self.secretIndex = 5+n*2
+        # self.ansIndex = 6+n*2
+        sql_fetch_answer_query = "SELECT * FROM credentials where id = ?"
+        c.execute(sql_fetch_answer_query, (self.forgetID,))
+        self.record = c.fetchall()
+        for row in self.record:
+            self.name  = row[1]
+            self.secret_status = row[5+n*2]
+            self.secret_answer = row[6+n*2]
+            # print(self.secret_answer)
+            # print(self.ansIndex)
+
+        if self.secret_status and self.secret_answer == self.ans:
+            print("Correct secret answer")
+        else:
+            print("Incorrect secret answer")
 
 # def deleteProfilePic(filepath):
 #     print("Deleting: "+filepath)
@@ -360,4 +388,7 @@ def exitRoot(root):
     if MsgBox == 'yes':
         root.destroy()
 
-root.mainloop()
+if 'TRAVIS' in os.environ:
+    root.update_idletasks()
+else:
+    root.mainloop()
