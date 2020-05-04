@@ -304,7 +304,7 @@ class App:
 
         # list of questions
         OptionList = ["What's name of your first pet dog?",
-        "What's your mother's middle name?",
+        "What's your father's middle name?",
         "What's your favorite book?"
         ]
 
@@ -315,8 +315,18 @@ class App:
         self.opt = tk.OptionMenu(secret_ques, self.variable, *OptionList)
         self.opt.config(width=30, font=('arial', 11))
         self.opt.place(x=170, y=103)
+        self.ques_num = 0
 
-        # print(self.variable.get())
+        # callback method
+        def callback(*args):  
+            for i in range(len(OptionList)):    # assign question number to for query in the database
+                if OptionList[i] == self.variable.get():
+                    break
+
+            self.ques_num = i
+            print(str(self.ques_num)+": "+OptionList[i])
+
+        self.variable.trace("w", callback)
 
         self.answer = Label(secret_ques, text="Your Answer*", font=('arial 11'))
         self.answer.place(x=40, y=150)
@@ -324,16 +334,37 @@ class App:
         self.answer_ent = Entry(secret_ques, width=20)
         self.answer_ent.place(x=170, y=150)
 
+        self.new_pass = Label(secret_ques,text="New Password*", font=('arial 11'), fg='black')
+        self.new_pass.place(x=40, y=190)
+
+        self.new_pass_ent = Entry(secret_ques, width=20, show='*')
+        self.new_pass_ent.place(x=170, y =190)
+
         # button to submit the answers
         self.submit_answer = Button(secret_ques, text="Submit", font=('arial 11'), width=12, height=2, command=self.subAnswer)
-        self.submit_answer.place(x=150, y=200)
+        self.submit_answer.place(x=150, y=230)
 
         '''''''''###OTP tab###'''''''''
         # to do:
     
     def subAnswer(self):
-        pass
-        # to do:
+        self.forgetID = self.id_label_ent.get()
+        self.ans = self.answer_ent.get()
+
+        n = int(self.ques_num)
+        sql_fetch_answer_query = "SELECT * FROM credentials where id = ?"
+        c.execute(sql_fetch_answer_query, (self.forgetID,))
+        self.record = c.fetchall()
+        for row in self.record:
+            self.secret_status = row[5+n*2]
+            self.secret_answer = row[6+n*2]
+
+        if self.secret_status and self.secret_answer == self.ans:
+            sql_pass_update_query = "UPDATE credentials SET pass=? where id=?"
+            c.execute(sql_pass_update_query, (self.new_pass_ent.get(), self.forgetID, ))
+            conn.commit()
+        else:
+            print("Incorrect secret answer")
 
 # def deleteProfilePic(filepath):
 #     print("Deleting: "+filepath)
