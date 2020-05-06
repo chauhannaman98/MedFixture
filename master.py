@@ -105,7 +105,7 @@ class App:
 
         # drawing toplevel window
         top = Toplevel() 
-        top.geometry("480x320+0+0") 
+        top.geometry("480x320+360+180") 
         top.title("Welcome") 
         
         # menu bar
@@ -220,7 +220,7 @@ class App:
 
     def aboutMaster(self):
         about = Toplevel()
-        about.geometry("480x320+0+0") 
+        about.geometry("480x320+360+180") 
         about.title("About")
         about.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
 
@@ -254,7 +254,7 @@ class App:
     # window to show 'What is it?'
     def whatIsIt(self):
         whatWindow = Toplevel()
-        whatWindow.geometry("480x320+0+0")
+        whatWindow.geometry("480x320+360+180")
         whatWindow.title("What is it?")
         whatWindow.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
 
@@ -275,7 +275,7 @@ class App:
     # function for resetting password
     def reset_pass(self):
         resetWindow = Toplevel()
-        resetWindow.geometry("480x320+0+0")
+        resetWindow.geometry("480x320+360+180")
         resetWindow.title("Reset my password")
         resetWindow.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
 
@@ -366,7 +366,7 @@ class App:
 
 root = tk.Tk()
 b = App(root)
-root.geometry("540x380+0+0")
+root.geometry("540x380+360+180")
 root.resizable(False, False)
 root.title("Techmirtz Hospital Appointment Application - Login Window")
 root.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
