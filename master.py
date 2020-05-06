@@ -166,28 +166,22 @@ class App:
     # function to open the appointment window    
     def appointment(self):
         if sys.platform.startswith('linux'):
-            print("OS = linux")
             os.system("python3 appointment.py")
         elif sys.platform.startswith('win32'):
-            print("OS = win32")
             os.system("python appointment.py")
 
     # function to open the update window  
     def update(self):
         if sys.platform.startswith('linux'):
-            print("OS = linux")
             os.system("python3 update.py")
         elif sys.platform.startswith('win32'):
-            print("OS = win32")
             os.system("python update.py")
 
     # function to open the display window  
     def display(self):
         if sys.platform.startswith('linux'):
-            print("OS = linux")
             os.system("python3 display.py")
         elif sys.platform.startswith('win32'):
-            print("OS = win32")
             os.system("python display.py")
 
     def writeTofile(self):
@@ -205,7 +199,7 @@ class App:
             self.name  = row[1]
             self.photo = row[4]
 
-            self.photoPath = "/home/techmirtz/projects/Python Project Sem 6/Hospital-Management-System/" + self.name + ".jpg"
+            self.photoPath = "/home/techmirtz/projects/Python Project Sem 6/MedFixture/" + self.name + ".jpg"
             # print(self.photoPath)
 
             # save file to directory
