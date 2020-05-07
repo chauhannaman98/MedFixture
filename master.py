@@ -115,7 +115,7 @@ class App:
         if self.db_designation == 'System Administrator' or self.db_designation == 'Doctor':
             itemone.add_command(label='Add Appointment', command=self.appointment)
             itemone.add_command(label='Edit Appointment', command=self.update)
-            itemone.add_command(label='Delete Appointment', command=self.update)
+            itemone.add_command(label='Delete Appointment', command=self.delete)
         
         itemone.add_command(label='View Appointment', command=self.display)
         itemone.add_separator()
@@ -177,12 +177,20 @@ class App:
         elif sys.platform.startswith('win32'):
             os.system("python update.py")
 
-    # function to open the display window  
+    # function to open the display window 
+    # may get modified or replaced in upcoming versions 
     def display(self):
         if sys.platform.startswith('linux'):
             os.system("python3 display.py")
         elif sys.platform.startswith('win32'):
             os.system("python display.py")
+
+    # function to open the display window  
+    def delete(self):
+        if sys.platform.startswith('linux'):
+            os.system("python3 delete.py")
+        elif sys.platform.startswith('win32'):
+            os.system("python delete.py")
 
     def writeTofile(self):
         # Convert binary data to proper format and write it on Hard Disk
