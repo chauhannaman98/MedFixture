@@ -130,20 +130,6 @@ class App:
         c.execute(query, (self.var1, self.var2, self.var3, self.var4, self.var5, self.var6, self.namenet.get(),))
         conn.commit()
         tkinter.messagebox.showinfo("Updated", "Successfully Updated.")
-    
-    
-    def delete_db(self):
-        # delete the appointment
-        sql2 = "DELETE FROM appointments WHERE name LIKE ?"
-        c.execute(sql2, (self.namenet.get(),))
-        conn.commit()
-        tkinter.messagebox.showinfo("Success", "Deleted Successfully")
-        self.ent1.destroy()
-        self.ent2.destroy()
-        self.ent3.destroy()
-        self.ent4.destroy()
-        self.ent5.destroy()
-        self.ent6.destroy()
 
 
 #creating the object
