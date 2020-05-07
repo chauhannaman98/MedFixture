@@ -61,7 +61,7 @@ class App:
         self.ulocation = Label(self.master, text="Location", font=('arial 12'))
         self.ulocation.place(x=70, y=340)
 
-        self.utime = Label(self.master, text="Appointment Time", font=('arial 12'))
+        self.utime = Label(self.master, text="Appointment Time (HH:MM)", font=('arial 12'))
         self.utime.place(x=70, y=380)
 
         self.uphone = Label(self.master, text="Phone Number", font=('arial 12'))
@@ -77,9 +77,28 @@ class App:
         self.ent2.place(x=300, y=260)
         self.ent2.insert(END, str(self.age))
 
-        self.ent3 = Entry(self.master, width=30)
-        self.ent3.place(x=300, y=300)
-        self.ent3.insert(END, str(self.gender))
+        # gender list
+        GenderList = ["Male",
+        "Female",
+        "Transgender"]
+
+        # Option menu
+        self.var = tk.StringVar()
+        self.var.set(GenderList[0])
+
+        self.opt = tk.OptionMenu(self.master, self.var, *GenderList)
+        self.opt.config(width=10, font=('arial', 11))
+        self.opt.place(x=300, y=300)
+
+        # callback method
+        def callback(*args):
+            for i in range(len(GenderList)):
+                if GenderList[i] == self.var.get():
+                    # print(GenderList[i])
+                    self.gender = GenderList[i]
+                    break
+        
+        self.var.trace("w", callback)
 
         self.ent4 = Entry(self.master, width=30)
         self.ent4.place(x=300, y=340)
@@ -96,17 +115,13 @@ class App:
         # button to execute update
         self.update = Button(self.master, text="Update", width=20, height=2, bg='lightblue', command=self.update_db)
         self.update.place(x=200, y=480)
-
-        # button to delete
-        # self.delete = Button(self.master, text="Delete", width=20, height=2, bg='red', command=self.delete_db)
-        # self.delete.place(x=150, y=380)
     
     
     def update_db(self):
         # declaring the variables to update
         self.var1 = self.ent1.get() #updated name
         self.var2 = self.ent2.get() #updated age
-        self.var3 = self.ent3.get() #updated gender
+        self.var3 = self.gender #updated gender
         self.var4 = self.ent4.get() #updated location
         self.var5 = self.ent5.get() #updated phone
         self.var6 = self.ent6.get() #updated time
@@ -134,7 +149,7 @@ class App:
 #creating the object
 root = tk.Tk()
 b = App(root)
-root.geometry("1000x620+100+50")
+root.geometry("640x620+100+50")
 root.resizable(False, False)
 root.title("Update Appointment")
 root.iconphoto(False, tk.PhotoImage(file='resources/icon.png'))
