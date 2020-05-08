@@ -119,7 +119,7 @@ class App:
         self.box.insert(END, "Total Appointments till now :  " + str(self.final_id))
 
     # function to call when the submit button is clicked
-    def add_appointment(self):
+    def add_appointment(self, event):
         # getting the user inputs
         self.val1 = self.name_ent.get()
         self.val2 = self.age_ent.get()
@@ -157,6 +157,8 @@ root.title("Add new appointment")
 
 # icon of the application
 root.iconphoto(False, tk.PhotoImage(file='resources/icon.png'))
+
+root.bind('<Return>', b.add_appointment)
 
 # end the loop
 root.mainloop()
