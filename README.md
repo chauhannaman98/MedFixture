@@ -1,13 +1,39 @@
 
-# MedFixture
-
 ![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)
+
 
 ![Build Status](https://travis-ci.com/chauhannaman98/MedFixture.svg?branch=master)  ![GitHub last commit](https://img.shields.io/github/last-commit/chauhannaman98/MedFixture) ![GitHub issues](https://img.shields.io/github/issues/chauhannaman98/MedFixture)
 
 ![GitHub top language](https://img.shields.io/github/languages/top/chauhannaman98/MedFixture) ![GitHub repo size](https://img.shields.io/github/repo-size/chauhannaman98/MedFixture) ![GitHub](https://img.shields.io/github/license/chauhannaman98/MedFixture)
 
 ![GitHub forks](https://img.shields.io/github/forks/chauhannaman98/MedFixture?style=social)  ![GitHub stars](https://img.shields.io/github/stars/chauhannaman98/MedFixture?style=social)
+
+
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/chauhannaman98/MedFixture">
+    <img src="resources/icon.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">MedFixture</h3>
+
+  <p align="center">
+    A GUI application to make and manage hospital appointments in a database!
+    <br />
+    <a href="https://github.com/chauhannaman98/MedFixture/blob/master/README.md"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/chauhannaman98/MedFixture">View Demo</a>
+    ·
+    <a href="https://github.com/chauhannaman98/MedFixture/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/chauhannaman98/MedFixture/issues">Request Feature</a>
+    ·
+  <a href="https://github.com/chauhannaman98/Medixture/pulls">Make Pull Request</a>
+  </p>
+</p>
+
 
 A python project for semester 6 using Tkinter and SQLite.
 
