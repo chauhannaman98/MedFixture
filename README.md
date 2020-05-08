@@ -35,6 +35,25 @@
 </p>
 
 
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+
 A python project for semester 6 using Tkinter and SQLite.
 
 This application use a Graphical User Interface(GUI) made using tkinter in Python3 which saves a patient's data to database using SQLite.
