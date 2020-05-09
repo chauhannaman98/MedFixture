@@ -70,7 +70,7 @@ This application use a Graphical User Interface(GUI) made using tkinter in Pytho
   * [SQLite Browser](http://sqlitebrowser.org/)
 * Hardware
   * Desktop/laptop
-  * OS: Windows 10/Linux 18.0+
+  * OS: Windows 10/Linux (Recommended Ubuntu 18.0+)
 
 <!--  If "ImportError: No module named 'tkinter'" is shown during execution of the python program, try installing tkinter library on your machine. -->
 
