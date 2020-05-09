@@ -39,6 +39,7 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
+  * [Features](#features)
   * [Built Using](#built-using)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
@@ -49,7 +50,7 @@
 * [Acknowledgements](#acknowledgements)
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## About the Project
 
 <p align="center">
   <a href="https://github.com/chauhannaman98/MedFixture">
@@ -57,9 +58,59 @@
   </a>
 </p>
 
-A python project for semester 6 using Tkinter and SQLite.
+MedFixture is an application to book and manage the appointments of a hospital or clinic. The application itself doesn't save any data, that is, the login credentials, authentication data and patients' data is not hard programmed in the python script. The data which is handled by the application is actualy stored in an SQLite database. The appication itself can be used by several people and institutions. We just need to connect it the corresponding database.
 
-This application use a Graphical User Interface(GUI) made using tkinter in Python3 which saves a patient's data to database using SQLite.
+### Features
+* Uses a master login window to access the database and make data transactions. It even has a _Login as Guest_ feature to login for only viewing the data and not editing the database.
+<p align="center">
+  <a href="https://github.com/chauhannaman98/MedFixture">
+    <img src="resources/readme/master.png" alt="master-login">
+  </a>
+</p>
+
+* If the user forgets the password, the application also has a feature to reset the password using the saved secret questions. The option to reset password usign OTP/reset link will be pushed in the upcoming versions hopefully.
+<p align="center">
+  <a href="https://github.com/chauhannaman98/MedFixture">
+    <img src="resources/readme/forgot_pass.png" alt="master-login">
+  </a>
+</p>
+
+* If logged in using an user, authenticated by the credentials from the database, a new toplevel window opens and show the profile details. It also gives options to add, edit or delete the appointments.
+<p align="center">
+  <a href="https://github.com/chauhannaman98/MedFixture">
+    <img src="resources/readme/menu_bar.png" alt="menu-bar">
+  </a>
+</p>
+
+* On clicking on _Add Appointment,_ a new window to add new appointment is opened which saves new data to connected database.
+<p align="center">
+  <a href="https://github.com/chauhannaman98/MedFixture">
+    <img src="resources/readme/add.png" alt="add-appointment">
+  </a>
+</p>
+
+* On clicking on _Edit Appointment,_ a new window to edit existing appointment which updates data to connected database.
+<p align="center">
+  <a href="https://github.com/chauhannaman98/MedFixture">
+    <img src="resources/readme/update.png" alt="update-appointment">
+  </a>
+</p>
+
+* On clicking on _Delete Appointment,_ a new window to delete any existing appointment which is saved in the connected database.
+<p align="center">
+  <a href="https://github.com/chauhannaman98/MedFixture">
+    <img src="resources/readme/delete.png" alt="delete-appointment">
+  </a>
+</p>
+
+* On completing your work, you can simply logout your session and re-login again.
+* On clicking on _Add Appointment,_ a new window to add new appointment is opened which saves new data to connected database.
+<p align="center">
+  <a href="https://github.com/chauhannaman98/MedFixture">
+    <img src="resources/readme/logout_warning.png" alt="logout-warning">
+  </a>
+</p>
+
 
 
 ### Built using
