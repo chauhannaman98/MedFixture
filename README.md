@@ -106,8 +106,6 @@ MedFixture is an application to book and manage the appointments of a hospital o
   </a>
 </p>
 
-
-
 ### Built using
 * Software
   * [Python 3.7](https://www.python.org/)
@@ -119,14 +117,32 @@ MedFixture is an application to book and manage the appointments of a hospital o
   * OS: Windows 10/Linux (Recommended Ubuntu 18.0+)
   
 ## Getting Started
-
+To use the this application on your system, you can simply clone this repository or download the .zip file. But, to run the application with all it's features, you must make proper setup and installation of libraries and prerequisites.
 
 ### Prerequisites
+* Make sure that you have Python v3.x installed on your machine. Otherwise, you can just use this command to install python3 on Ubuntu :
+```bash
+sudo apt install python3
+```
+Otherwise, just go [here](https://www.python.org/) and download the python for your system.
 
+* To install tkinter module for python 3, use the following command:
+```bash
+sudo apt install python3-tk
+```
+
+* Application uses SQLite3. Thus to install the module for python3, type the command:
+```bash
+sudo apt install sqlite3
+```
+
+* The `master.py` is also using Pillow which is a Python imaging library. To install the relevant module, use the following command:
+```bash
+sudo apt install python3-pil
+```
 
 ### Installations
 
-<!--  If "ImportError: No module named 'tkinter'" is shown during execution of the python program, try installing tkinter library on your machine. -->
 
 <!-- CONTRIBUTING -->
 ## Contributing
