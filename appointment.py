@@ -35,34 +35,34 @@ class App:
 
         # patient's name
         self.name = Label(self.left, text="Patient's Name", font=('arial 12'), fg='black', bg='lightblue')
-        self.name.place(x=70, y=100)
+        self.name.place(x=65, y=100)
 
         # age
         self.age = Label(self.left, text="Age", font=('arial 12'), fg='black', bg='lightblue')
-        self.age.place(x=70, y=140)
+        self.age.place(x=65, y=140)
 
         # gender
         self.gender = Label(self.left, text="Gender", font=('arial 12'), fg='black', bg='lightblue')
-        self.gender.place(x=70, y=180)
+        self.gender.place(x=65, y=180)
 
         # location
         self.location = Label(self.left, text="Location", font=('arial 12'), fg='black', bg='lightblue')
-        self.location.place(x=70, y=220)
+        self.location.place(x=65, y=220)
 
         # appointment time
         self.time = Label(self.left, text="Appointment Time (HH:MM)", font=('arial 12'), fg='black', bg='lightblue')
-        self.time.place(x=70, y=260)
+        self.time.place(x=65, y=260)
 
         # phone
         self.phone = Label(self.left, text="Phone Number", font=('arial 12'), fg='black', bg='lightblue')
-        self.phone.place(x=70, y=300)
+        self.phone.place(x=65, y=300)
 
         # Enteries for all labels==============================================================
         self.name_ent = Entry(self.left, width=30)
-        self.name_ent.place(x=260, y=100)
+        self.name_ent.place(x=275, y=100)
 
         self.age_ent = Entry(self.left, width=30)
-        self.age_ent.place(x=260, y=140)
+        self.age_ent.place(x=275, y=140)
 
         # gender list
         GenderList = ["Male",
@@ -75,28 +75,25 @@ class App:
 
         self.opt = tk.OptionMenu(self.master, self.var, *GenderList)
         self.opt.config(width=10, font=('arial', 11))
-        self.opt.place(x=260, y=180)
+        self.opt.place(x=275, y=180)
 
         # callback method
         def callback(*args):
             for i in range(len(GenderList)):
                 if GenderList[i] == self.var.get():
-                    # print(GenderList[i])
                     self.gender_ent = GenderList[i]
                     break
         
         self.var.trace("w", callback)
-        # self.gender_ent = Entry(self.left, width=30)
-        # self.gender_ent.place(x=260, y=180)
 
         self.location_ent = Entry(self.left, width=30)
-        self.location_ent.place(x=260, y=220)
+        self.location_ent.place(x=275, y=220)
 
         self.time_ent = Entry(self.left, width=30)
-        self.time_ent.place(x=260, y=260)
+        self.time_ent.place(x=275, y=260)
 
         self.phone_ent = Entry(self.left, width=30)
-        self.phone_ent.place(x=260, y=300)
+        self.phone_ent.place(x=275, y=300)
 
         # button to perform a command
         self.submit = Button(self.left, text="Add Appointment", width=20, height=2, bg='steelblue', command=self.add_appointment)
@@ -122,7 +119,7 @@ class App:
         self.box.insert(END, "Total Appointments till now :  " + str(self.final_id))
 
     # function to call when the submit button is clicked
-    def add_appointment(self):
+    def add_appointment(self, event):
         # getting the user inputs
         self.val1 = self.name_ent.get()
         self.val2 = self.age_ent.get()
@@ -160,6 +157,8 @@ root.title("Add new appointment")
 
 # icon of the application
 root.iconphoto(False, tk.PhotoImage(file='resources/icon.png'))
+
+root.bind('<Return>', b.add_appointment)
 
 # end the loop
 root.mainloop()
