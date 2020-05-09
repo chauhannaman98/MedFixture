@@ -2,11 +2,7 @@
 ![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)
 
 
-![Build Status](https://travis-ci.com/chauhannaman98/MedFixture.svg?branch=master)  ![GitHub last commit](https://img.shields.io/github/last-commit/chauhannaman98/MedFixture) ![GitHub issues](https://img.shields.io/github/issues/chauhannaman98/MedFixture)
-
-![GitHub top language](https://img.shields.io/github/languages/top/chauhannaman98/MedFixture) ![GitHub repo size](https://img.shields.io/github/repo-size/chauhannaman98/MedFixture) ![GitHub](https://img.shields.io/github/license/chauhannaman98/MedFixture)
-
-![GitHub forks](https://img.shields.io/github/forks/chauhannaman98/MedFixture?style=social)  ![GitHub stars](https://img.shields.io/github/stars/chauhannaman98/MedFixture?style=social)
+![Build Status](https://travis-ci.com/chauhannaman98/MedFixture.svg?branch=master)  ![GitHub last commit](https://img.shields.io/github/last-commit/chauhannaman98/MedFixture) ![GitHub issues](https://img.shields.io/github/issues/chauhannaman98/MedFixture) ![GitHub top language](https://img.shields.io/github/languages/top/chauhannaman98/MedFixture) ![GitHub repo size](https://img.shields.io/github/repo-size/chauhannaman98/MedFixture) ![GitHub](https://img.shields.io/github/license/chauhannaman98/MedFixture) ![GitHub forks](https://img.shields.io/github/forks/chauhannaman98/MedFixture?style=social)  ![GitHub stars](https://img.shields.io/github/stars/chauhannaman98/MedFixture?style=social)
 
 
 <!-- PROJECT LOGO -->
@@ -54,7 +50,7 @@
 
 <p align="center">
   <a href="https://github.com/chauhannaman98/MedFixture">
-    <img src="resources/readme/master.png" alt="master-window">
+    <img src="resources/readme/what_is_it.png" alt="what-is-it-window">
   </a>
 </p>
 
@@ -104,7 +100,6 @@ MedFixture is an application to book and manage the appointments of a hospital o
 </p>
 
 * On completing your work, you can simply logout your session and re-login again.
-* On clicking on _Add Appointment,_ a new window to add new appointment is opened which saves new data to connected database.
 <p align="center">
   <a href="https://github.com/chauhannaman98/MedFixture">
     <img src="resources/readme/logout_warning.png" alt="logout-warning">
