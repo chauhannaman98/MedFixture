@@ -117,6 +117,14 @@ MedFixture is an application to book and manage the appointments of a hospital o
 * Hardware
   * Desktop/laptop
   * OS: Windows 10/Linux (Recommended Ubuntu 18.0+)
+  
+## Getting Started
+
+
+### Prerequisites
+
+
+### Installations
 
 <!--  If "ImportError: No module named 'tkinter'" is shown during execution of the python program, try installing tkinter library on your machine. -->
 
@@ -143,7 +151,7 @@ Distributed under the GNU General Public License v3.0 License. See [LICENSE](htt
 <!-- CONTACT -->
 ## Contact
 
-Naman Chauhan - [@techmirtz](https://twitter.com/techmirtz) - chauhannaman98gmail.com
+Made with :heart: by Naman Chauhan - [@techmirtz](https://twitter.com/techmirtz) - chauhannaman98gmail.com
 
 Project Link: [https://github.com/chauhannaman98/MedFixture](https://github.com/chauhannaman98/Medfixture)
 
