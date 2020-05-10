@@ -162,8 +162,19 @@ sudo apt install python3-pil
 ```sh
 git clone https://github.com/chauhannaman98/MedFixture.git
 ```
+2. Go to the directory:
+```sh
+cd MedFixture
+```
 
-2. Make sure you have installed all the [prerequisites](#prerequisites) and required [tools](#built-using) and modules.
+4. Make sure you have installed all the [prerequisites](#prerequisites) and required [tools](#built-using) and modules.
+
+5. Make sure you have database(`*db`) file in the directory.
+
+5. Run `master.py` from terminal/command prompt from the .
+```sh
+python3 master.py
+```
 
 
 ## Changelog
