@@ -121,28 +121,34 @@ To use the this application on your system, you can simply clone this repository
 
 ### Prerequisites
 * Make sure that you have Python v3.x installed on your machine. Otherwise, you can just use this command to install python3 on Ubuntu :
-```bash
+```sh
 sudo apt install python3
 ```
 Otherwise, just go [here](https://www.python.org/) and download the python for your system.
 
 * To install tkinter module for python 3, use the following command:
-```bash
+```sh
 sudo apt install python3-tk
 ```
 
 * Application uses SQLite3. Thus to install the module for python3, type the command:
-```bash
+```sh
 sudo apt install sqlite3
 ```
 
 * The `master.py` is also using Pillow which is a Python imaging library. To install the relevant module, use the following command:
-```bash
+```sh
 sudo apt install python3-pil
 ```
 
-### Installations
+### Installation
 
+1. Clone the repository or download the .zip from [here](https://github.com/chauhannaman98/MedFixture/archive/master.zip).
+```sh
+git clone https://github.com/chauhannaman98/MedFixture.git
+```
+
+2. Make sure you have installed all the [prerequisites](#prerequisites) and required [tools](#built-using) and modules.
 
 <!-- CONTRIBUTING -->
 ## Contributing
