@@ -168,11 +168,11 @@ git clone https://github.com/chauhannaman98/MedFixture.git
 
 ## Changelog
 
-### [[1.0.0-beta.1](https://github.com/chauhannaman98/MedFixture/releases/tag/v1.0.0-beta.1)] - 2020-05-10
+### [[v1.0.0-beta.1](https://github.com/chauhannaman98/MedFixture/releases/tag/v1.0.0-beta.1)] - 2020-05-10
 
 A stable application has been released for public use in the beta state. Users are appreciated to test the application. You can [create](https://github.com/chauhannaman98/MedFixture/issues) an issue to request a new feature or report a bug. Also, you can fork the repository and [make](https://github.com/chauhannaman98/Medixture/pulls) a pull request for contributions.
 
-### [[0.2.0](https://github.com/chauhannaman98/MedFixture/releases/tag/v0.2.0)] - 2020-05-07
+### [[v0.2.0](https://github.com/chauhannaman98/MedFixture/releases/tag/v0.2.0)] - 2020-05-07
 #### Added:
 - `Added` new delete window to delete the existing record in the database.
 
@@ -182,7 +182,7 @@ A stable application has been released for public use in the beta state. Users a
 #### Deprecated:
 - `Deprecating` display window (view option) from the top-level window.
 
-### [[0.1.0](https://github.com/chauhannaman98/MedFixture/releases/tag/0.1.0)] - 2020-05-05
+### [[v0.1.0](https://github.com/chauhannaman98/MedFixture/releases/tag/0.1.0)] - 2020-05-05
 
 The release is in the initial development phase. Anything MAY change at any time. The public API SHOULD NOT be considered stable.
 
