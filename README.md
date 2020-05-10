@@ -169,7 +169,7 @@ cd MedFixture
 
 4. Make sure you have installed all the [prerequisites](#prerequisites) and required [tools](#built-using) and modules.
 
-5. Make sure you have database(`*db`) file in the directory.
+5. Make sure you have database(`database.db`) file in the directory.
 
 5. Run `master.py` from terminal/command prompt from the .
 ```sh
