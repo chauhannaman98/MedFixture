@@ -158,7 +158,7 @@ sudo apt install python3-pil
 
 ### Installation
 
-1. Clone the repository or download the .zip from [here](https://github.com/chauhannaman98/MedFixture/archive/master.zip).
+1. :dancers: Clone the repository or download the .zip from [here](https://github.com/chauhannaman98/MedFixture/archive/master.zip).
 ```sh
 git clone https://github.com/chauhannaman98/MedFixture.git
 ```
@@ -171,7 +171,7 @@ cd MedFixture
 
 5. Make sure you have database(`database.db`) file in the directory.
 
-5. Run `master.py` from terminal/command prompt from the .
+5. :man_technologist: Run `master.py` from terminal/command prompt from the .
 ```sh
 python3 master.py
 ```
@@ -223,7 +223,7 @@ Distributed under the GNU General Public License v3.0 License. See [LICENSE](htt
 
 Made with :heart: by Naman Chauhan - [@techmirtz](https://twitter.com/techmirtz) - chauhannaman98gmail.com
 
-Project Link: [https://github.com/chauhannaman98/MedFixture](https://github.com/chauhannaman98/Medfixture)
+Project Link: :octocat: [https://github.com/chauhannaman98/MedFixture](https://github.com/chauhannaman98/Medfixture)
 
 
 
