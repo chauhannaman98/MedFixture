@@ -1,8 +1,22 @@
 
-![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)
+<p align="center">
+  <img alt="For-the-Badge-Python" src="http://ForTheBadge.com/images/badges/made-with-python.svg">
+  <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/chauhannaman98/MedFixture?include_prereleases&style=for-the-badge">
+</p>
 
-
-![Build Status](https://travis-ci.com/chauhannaman98/MedFixture.svg?branch=master)  ![GitHub last commit](https://img.shields.io/github/last-commit/chauhannaman98/MedFixture) ![GitHub issues](https://img.shields.io/github/issues/chauhannaman98/MedFixture) ![GitHub top language](https://img.shields.io/github/languages/top/chauhannaman98/MedFixture) ![GitHub repo size](https://img.shields.io/github/repo-size/chauhannaman98/MedFixture) ![GitHub](https://img.shields.io/github/license/chauhannaman98/MedFixture) ![GitHub forks](https://img.shields.io/github/forks/chauhannaman98/MedFixture?style=social)  ![GitHub stars](https://img.shields.io/github/stars/chauhannaman98/MedFixture?style=social)
+<p align="center">
+  <img alt="Travis (.com) branch" src="https://img.shields.io/travis/com/chauhannaman98/MedFixture/master?style=flat-square">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/chauhannaman98/MedFixture?style=flat-square">
+  <img alt="GitHub issues" src="https://img.shields.io/github/issues/chauhannaman98/MedFixture?style=flat-square">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/chauhannaman98/MedFixture?style=flat-square">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/chauhannaman98/MedFixture?style=flat-square">
+  <img alt="GitHub License" src="https://img.shields.io/github/license/chauhannaman98/MedFixture?style=flat-square">
+</p>
+                                                                                     
+<p align="center">
+  <img alt="GitHub forks" src="https://img.shields.io/github/forks/chauhannaman98/MedFixture?style=social">
+  <img alt="GitHub stars" src="https://img.shields.io/github/stars/chauhannaman98/MedFixture?style=social">
+</p>
 
 
 <!-- PROJECT LOGO -->
@@ -40,6 +54,7 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
+* [Changelog]()
 * [Contributing](#contributing)
 * [License](#license)
 * [Contact](#contact)
@@ -149,6 +164,7 @@ git clone https://github.com/chauhannaman98/MedFixture.git
 ```
 
 2. Make sure you have installed all the [prerequisites](#prerequisites) and required [tools](#built-using) and modules.
+
 
 <!-- CONTRIBUTING -->
 ## Contributing
