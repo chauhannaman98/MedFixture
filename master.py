@@ -105,7 +105,7 @@ class App:
 
         # drawing toplevel window
         top = Toplevel() 
-        top.geometry("480x320+0+0") 
+        top.geometry("480x320+360+180") 
         top.title("Welcome") 
         
         # menu bar
@@ -115,7 +115,7 @@ class App:
         if self.db_designation == 'System Administrator' or self.db_designation == 'Doctor':
             itemone.add_command(label='Add Appointment', command=self.appointment)
             itemone.add_command(label='Edit Appointment', command=self.update)
-            itemone.add_command(label='Delete Appointment', command=self.update)
+            itemone.add_command(label='Delete Appointment', command=self.delete)
         
         itemone.add_command(label='View Appointment', command=self.display)
         itemone.add_separator()
@@ -166,29 +166,31 @@ class App:
     # function to open the appointment window    
     def appointment(self):
         if sys.platform.startswith('linux'):
-            print("OS = linux")
             os.system("python3 appointment.py")
         elif sys.platform.startswith('win32'):
-            print("OS = win32")
             os.system("python appointment.py")
 
     # function to open the update window  
     def update(self):
         if sys.platform.startswith('linux'):
-            print("OS = linux")
             os.system("python3 update.py")
         elif sys.platform.startswith('win32'):
-            print("OS = win32")
             os.system("python update.py")
 
-    # function to open the display window  
+    # function to open the display window 
+    # may get modified or replaced in upcoming versions 
     def display(self):
         if sys.platform.startswith('linux'):
-            print("OS = linux")
             os.system("python3 display.py")
         elif sys.platform.startswith('win32'):
-            print("OS = win32")
             os.system("python display.py")
+
+    # function to open the display window  
+    def delete(self):
+        if sys.platform.startswith('linux'):
+            os.system("python3 delete.py")
+        elif sys.platform.startswith('win32'):
+            os.system("python delete.py")
 
     def writeTofile(self):
         # Convert binary data to proper format and write it on Hard Disk
@@ -226,7 +228,7 @@ class App:
 
     def aboutMaster(self):
         about = Toplevel()
-        about.geometry("480x320+0+0") 
+        about.geometry("480x320+360+180") 
         about.title("About")
         about.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
 
@@ -260,7 +262,7 @@ class App:
     # window to show 'What is it?'
     def whatIsIt(self):
         whatWindow = Toplevel()
-        whatWindow.geometry("480x320+0+0")
+        whatWindow.geometry("480x320+360+180")
         whatWindow.title("What is it?")
         whatWindow.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
 
@@ -281,7 +283,7 @@ class App:
     # function for resetting password
     def reset_pass(self):
         resetWindow = Toplevel()
-        resetWindow.geometry("480x320+0+0")
+        resetWindow.geometry("480x320+360+180")
         resetWindow.title("Reset my password")
         resetWindow.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))
 
@@ -372,7 +374,7 @@ class App:
 
 root = tk.Tk()
 b = App(root)
-root.geometry("540x380+0+0")
+root.geometry("540x380+360+180")
 root.resizable(False, False)
 root.title("Techmirtz Hospital Appointment Application - Login Window")
 root.iconphoto(False, tk.PhotoImage(file="resources/icon.png"))

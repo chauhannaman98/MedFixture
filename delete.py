@@ -69,67 +69,36 @@ class App:
 
         # entries for each labels==========================================================
         # ===================filling the search result in the entry box to update
-        self.ent1 = Entry(self.master, width=30)
+        self.ent1 = Label(self.master, text=self.name1, font=('arial 12'))
         self.ent1.place(x=300, y=220)
-        self.ent1.insert(END, str(self.name1))
 
-        self.ent2 = Entry(self.master, width=30)
+        self.ent2 = Label(self.master, text=self.age, font=('arial 12'))
         self.ent2.place(x=300, y=260)
-        self.ent2.insert(END, str(self.age))
 
-        # gender list
-        GenderList = ["Male",
-        "Female",
-        "Transgender"]
+        self.ent3 = Label(self.master, text=self.gender, font=('arial 12'))
+        self.ent3.place(x=300, y=300)
 
-        # Option menu
-        self.var = tk.StringVar()
-        self.var.set(GenderList[0])
-
-        self.opt = tk.OptionMenu(self.master, self.var, *GenderList)
-        self.opt.config(width=10, font=('arial', 11))
-        self.opt.place(x=300, y=300)
-
-        # callback method
-        def callback(*args):
-            for i in range(len(GenderList)):
-                if GenderList[i] == self.var.get():
-                    # print(GenderList[i])
-                    self.gender = GenderList[i]
-                    break
-        
-        self.var.trace("w", callback)
-
-        self.ent4 = Entry(self.master, width=30)
+        self.ent4 = Label(self.master, text=self.location, font=('arial 12'))
         self.ent4.place(x=300, y=340)
-        self.ent4.insert(END, str(self.location))
 
-        self.ent5 = Entry(self.master, width=30)
+        self.ent5 = Label(self.master, text=self.time, font=('arial 12'))
         self.ent5.place(x=300, y=380)
-        self.ent5.insert(END, str(self.time))
 
-        self.ent6 = Entry(self.master, width=30)
+        self.ent6 = Label(self.master, text=self.phone, font=('arial 12'))
         self.ent6.place(x=300, y=420)
-        self.ent6.insert(END, str(self.phone))
 
         # button to execute update
-        self.update = Button(self.master, text="Update", width=20, height=2, bg='lightblue', command=self.update_db)
-        self.update.place(x=200, y=480)
+        self.delete = Button(self.master, text="Delete", width=20, height=2, bg='red', command=self.delete_db)
+        self.delete.place(x=200, y=480)
     
     
-    def update_db(self):
-        # declaring the variables to update
-        self.var1 = self.ent1.get() #updated name
-        self.var2 = self.ent2.get() #updated age
-        self.var3 = self.gender #updated gender
-        self.var4 = self.ent4.get() #updated location
-        self.var5 = self.ent5.get() #updated phone
-        self.var6 = self.ent6.get() #updated time
-
-        query = "UPDATE appointments SET name=?, age=?, gender=?, location=?, phone=?, scheduled_time=? WHERE name LIKE ?"
-        c.execute(query, (self.var1, self.var2, self.var3, self.var4, self.var5, self.var6, self.namenet.get(),))
-        conn.commit()
-        tkinter.messagebox.showinfo("Updated", "Successfully Updated.")
+    def delete_db(self):
+        if tkinter.messagebox.askyesno("Are you sure?", "Delete record of "+self.name1+"?"):
+            # delete the appointment
+            sql2 = "DELETE FROM appointments WHERE name LIKE ?"
+            c.execute(sql2, (self.namenet.get(),))
+            conn.commit()
+            tkinter.messagebox.showinfo("Success", "Deleted Successfully")
 
 
 #creating the object
