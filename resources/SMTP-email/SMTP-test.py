@@ -4,8 +4,8 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 
 toaddrs = input("Enter your email ID: ")
-username = 'techmirtzskbuddy@gmail.com'
-password = 'passwordnahihai'
+username = '********'
+password = '********'
 x = ''.join(random.choices(string.ascii_letters + string.digits, k=12))
 
 message = MIMEMultipart("alternative")
