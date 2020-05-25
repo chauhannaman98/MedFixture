@@ -1,10 +1,53 @@
+<!--//HTML code with CSS <style> tag
+    Gmail doesn't render <style> tags; thus, generate HTML with inline CSS
+        from https://templates.mailchimp.com/resources/inline-css///-->
 <html>
-	<body>
-		<h1 align="center">Hi! Seems like you forgot you password. </h1>
-			<p align="center">Don't worry! Just enter the verification code
-                given below.</p>
-            <p align="center">Your verification code is <code>"""+ x +"""</code></p>
-    </body>
-    <footer align="center">Project maintained by 
-        <a href="https://github.com/chauhannaman98">chauhannaman98</a></footer>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Forgot Password | MedFixture</title>
+<!--CSS-->
+<style type="text/css" media="screen">
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap');
+
+h1,p {
+    text-align: center;
+}
+p {
+    text-align: center;
+    font-size: larger;
+}
+footer {
+    text-align: center;
+}
+ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0;
+}
+li {
+    font-size: smaller;
+}
+p.veri-code {
+    font-family: 'Inconsolata', monospace;
+    font-size: larger;
+}
+</style>
+
+<body>
+    <p align="center">
+        <img src="https://raw.githubusercontent.com/chauhannaman98/MedFixture/master/resources/icon.png"
+        alt="Logo" width="80" height="80">
+        <h3 align="center">MedFixture</h3>
+    </p>
+    <h1>Hi! Seems like you forgot your password. </h1>
+        <p>Don't worry! Just enter the verification code
+            given below.</p>
+        <p>Your verification code is :</p>
+        <p class="veri-code">"""+ x +"""</p>
+</body>
+<footer>
+    <ul style="list-style-type:none;", margin=0, padding=0>
+        <li>An open-source project maintained by <a href="https://github.com/chauhannaman98">chauhannaman98</a></li>
+        <li><a href="https://chauhannaman98.github.io/MedFixture">Visit website</a></font></li>
+    </ul>
+</footer>
 </html>
