@@ -13,14 +13,6 @@ message["Subject"] = "Forgot Password | MedFixture"
 message["From"] = username
 message["To"] = toaddrs
 
-# fp = open('icon.png', 'rb')
-# msgImage = MIMEImage(fp.read())
-# fp.close()
-
-# # Define the image's ID as referenced above
-# msgImage.add_header('Content-ID', '<logo>')
-# msgRoot.attach(msgImage)
-
 html = """\
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
