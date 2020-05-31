@@ -347,7 +347,7 @@ class App:
         self.new_pass_ent.place(x=170, y =190)
 
         # button to submit the answers
-        self.submit_answer = Button(self.secret_ques, text="Submit", font=('arial 11'), width=12, height=2, command=self.subAnswer)
+        self.submit_answer = Button(self.secret_ques, text="Submit", font=('arial 11'), width=12, height=2, command=self.subAnswerSecretQues)
         self.submit_answer.place(x=150, y=230)
 
         '''''''''###OTP tab###'''''''''
@@ -391,19 +391,18 @@ class App:
             self.name = row[1]
             self.reg_email = row[11]
         
-        print(self.name)
-        print(self.reg_email)
+        # print(self.name)
+        # print(self.reg_email)
 
         # send verification code
         if(is_connected(self)):
             updateStatusLabel(self)
+            self.Sub_loginID["state"] = "disabled"
+            self.emailStatus.configure(text='Please wait! Sending email. . .', fg='black')
             self.verifyCode = sendVeriEmail(self, self.name, self.reg_email)
             print("Code: "+self.verifyCode)
         else:
             updateStatusLabel(self)
-
-        self.veriCode = Label(self.otp, text="Verification Code*", font=('arial 11'))
-        self.veriCode.place(x=40, y=140)
 
     def subAnswerOTP(self):
         self.newPass = self.new_pass_otp_ent.get()
@@ -417,8 +416,10 @@ class App:
             print("Password Updated")
         else:
             print("Incorrect verification code")
+        
+        self.Sub_loginID["state"] = "normal"
     
-    def subAnswer(self):
+    def subAnswerSecretQues(self):
         tkinter.messagebox.showinfo(parent=self.top, title="Email Sent", message="Verification has been successfully sent to your registered email ID")  
         self.forgetID = self.id_label_ent.get()
         self.ans = self.answer_ent.get()
@@ -465,10 +466,12 @@ def updateStatusLabel(self):
         # set connected
         print("Status: Connected")
         self.netStatus.configure(text='Internet: Connected', fg='green')
+        # self.Sub_loginID["state"] = "normal"
     else:
         # set not connected
         print("Status: Not connected")
         self.netStatus.configure(text='Internet: Not Connected', fg='red')
+        # self.Sub_loginID["state"] = "disabled"
 
 # fuction to check internet connectivity
 def is_connected(self):
@@ -485,8 +488,8 @@ def sendVeriEmail(self, name, email):
     toaddrs = email
 
     # enter you email credentials
-    username = '******'
-    password = '******'
+    username = '*****'
+    password = '*****'
     x = ''.join(random.choices(string.ascii_letters + string.digits, k=12))
 
     message = MIMEMultipart("alternative")
