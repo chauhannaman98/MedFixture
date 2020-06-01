@@ -63,7 +63,7 @@ class App:
     def __init__(self, master):
         self.master = master
         # heading label
-        self.heading = Label(master, text="Update Appointments",  fg='black', font=('arial 18'))
+        self.heading = Label(master, text="Display Appointments",  fg='black', font=('arial 18'))
         self.heading.place(x=180, y=40)
 
         # search criteria -->name 
